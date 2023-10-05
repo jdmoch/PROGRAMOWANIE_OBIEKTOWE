@@ -217,7 +217,23 @@ public class Main
 
 //Napisz program, który oblicza sumę cyfr dowolnej wprowadzonej liczby. Program powinien akceptować liczbę jako input od użytkownika.
 
-
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj liczbe");
+        int liczba= scanner.nextInt();
+        int suma=0;
+        int temp=0;
+        temp=liczba;
+        while(temp>0)
+        {
+            suma=suma+temp%10;
+            temp=temp/10;
+        }
+        System.out.println(suma);
+        suma=0;
+    }
+}
 
 //Stwórz program, który przyjmie od użytkownika liczbę całkowitą i zwróci tę liczbę w odwrotnej kolejności. Na przykład, dla liczby 12345, wynik powinien wynosić 54321. Możesz ograniczyć program tylko do liczb dodatnich.
 
