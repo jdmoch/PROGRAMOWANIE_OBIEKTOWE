@@ -4,7 +4,7 @@ openjdk21
 sout i tab zeby wpisac system.out.println
 
 
-Napisz prostą aplikację kalkulatora tekstowego, która przyjmuje dwa liczby od użytkownika jako wejście i wykonuje podstawowe operacje matematyczne (dodawanie, odejmowanie, mnożenie, dzielenie). Wyświetl wyniki na ekranie.
+//Napisz prostą aplikację kalkulatora tekstowego, która przyjmuje dwa liczby od użytkownika jako wejście i wykonuje podstawowe operacje matematyczne (dodawanie, odejmowanie, mnożenie, dzielenie). Wyświetl wyniki na ekranie.
 
 import java.util.Scanner;
 
@@ -24,7 +24,7 @@ public class Main
     }
 }
 
-Napisz program, który wczytuje ze standardowego wejścia dwa łańcuchy znaków, a następnie wypisuje je w kolejnych wierszach na standardowym wyjściu.
+//Napisz program, który wczytuje ze standardowego wejścia dwa łańcuchy znaków, a następnie wypisuje je w kolejnych wierszach na standardowym wyjściu.
 
 import java.util.Scanner;
 
@@ -42,7 +42,7 @@ public class Main
 
     }
 }
-Napisz program, który wczytuje ze standardowego wejścia cztery liczby wymierne, a następnie wypisuje ich sumę na standardowym wyjściu.
+//Napisz program, który wczytuje ze standardowego wejścia cztery liczby wymierne, a następnie wypisuje ich sumę na standardowym wyjściu.
 
 import java.util.Scanner;
 
@@ -62,7 +62,7 @@ public class Main
 
 -------------------Juz mocniejsze zadania 
 
-Napisz program, który przyjmuje trzy liczby całkowite jako argumenty i zwraca największą z nich. Zastosuj instrukcje warunkowe do porównania liczb.
+//Napisz program, który przyjmuje trzy liczby całkowite jako argumenty i zwraca największą z nich. Zastosuj instrukcje warunkowe do porównania liczb.
 
 public class Main {
     public static void main(String[] args) {
@@ -88,9 +88,9 @@ public class Main {
     }
 }
 
-Napisz program, który na podstawie podanego jako argument numeru dnia tygodnia (od 1 do 7) wypisze nazwę tego dnia tygodnia. 
-Dla przykładu, jeżeli użytkownik poda liczbę 1, program powinien wypisać “Poniedziałek”. Jeżeli podana liczba nie jest z zakresu od 1 do 7, 
-program powinien wyświetlić komunikat “Niepoprawny numer dnia tygodnia”.
+//Napisz program, który na podstawie podanego jako argument numeru dnia tygodnia (od 1 do 7) wypisze nazwę tego dnia tygodnia. 
+//Dla przykładu, jeżeli użytkownik poda liczbę 1, program powinien wypisać “Poniedziałek”. Jeżeli podana liczba nie jest z zakresu od 1 do 7, 
+//program powinien wyświetlić komunikat “Niepoprawny numer dnia tygodnia”.
 
 import java.util.Scanner;
 
@@ -129,8 +129,8 @@ public class Main
     }
 }
 
-Napisz program, który będzie sprawdzał, czy podany rok jest rokiem przestępnym.
-Rok jest przestępny, jeśli jest podzielny przez 4, ale nie jest podzielny przez 100, chyba że jest podzielny przez 400
+//Napisz program, który będzie sprawdzał, czy podany rok jest rokiem przestępnym.
+//Rok jest przestępny, jeśli jest podzielny przez 4, ale nie jest podzielny przez 100, chyba że jest podzielny przez 400
 
 import java.util.Scanner;
 
@@ -152,7 +152,7 @@ public class Main {
 }
 
 
-Napisz program sprawdzający czy podane liczby z klawiatury mogą stanowić poprawna godzinę w formacie 24-godzinnym.
+//Napisz program sprawdzający czy podane liczby z klawiatury mogą stanowić poprawna godzinę w formacie 24-godzinnym.
 Przykładowe wejście:
 Podaj godzinę: 22
 Podaj minuty: 12
@@ -177,4 +177,14 @@ public class Main {
         }
     }
 }
+
+//Napisz program, który wykorzystując pętlę for wyświetli liczby od 1 do 100.
+
+//Napisz program, który przy użyciu pętli while obliczy sumę liczb od 1 do 50.
+
+//Napisz program, który oblicza sumę cyfr dowolnej wprowadzonej liczby. Program powinien akceptować liczbę jako input od użytkownika.
+
+//Stwórz program, który przyjmie od użytkownika liczbę całkowitą i zwróci tę liczbę w odwrotnej kolejności. Na przykład, dla liczby 12345, wynik powinien wynosić 54321.
+//Możesz ograniczyć program tylko do liczb dodatnich.
+
 
