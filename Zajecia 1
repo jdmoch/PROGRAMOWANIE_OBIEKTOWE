@@ -1,4 +1,10 @@
-Prosty kalkulator
+Intellij idea
+openjdk21
+
+sout i tab zeby wpisac system.out.println
+
+
+Napisz prostą aplikację kalkulatora tekstowego, która przyjmuje dwa liczby od użytkownika jako wejście i wykonuje podstawowe operacje matematyczne (dodawanie, odejmowanie, mnożenie, dzielenie). Wyświetl wyniki na ekranie.
 
 import java.util.Scanner;
 
@@ -17,3 +23,158 @@ public class Main
         System.out.println("Wynik dzielenia "+ (liczba1/liczba2));
     }
 }
+
+Napisz program, który wczytuje ze standardowego wejścia dwa łańcuchy znaków, a następnie wypisuje je w kolejnych wierszach na standardowym wyjściu.
+
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("napisz jakis tekst 1");
+        String str1 = scanner.next();
+        System.out.println("napisz jakis tekst 2");
+        String str2 = scanner.next();
+        System.out.println("napisales tekst " + (str1));
+        System.out.println("napisales tekst 2 " + (str2));
+
+    }
+}
+Napisz program, który wczytuje ze standardowego wejścia cztery liczby wymierne, a następnie wypisuje ich sumę na standardowym wyjściu.
+
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        double liczba1 = scanner.nextDouble();
+        double liczba2 = scanner.nextDouble();
+        double liczba3 = scanner.nextDouble();
+        double liczba4 = scanner.nextDouble();
+
+        System.out.println("Wynik"+ (liczba1+liczba2+liczba3+liczba4));
+    }
+}
+
+-------------------Juz mocniejsze zadania 
+
+Napisz program, który przyjmuje trzy liczby całkowite jako argumenty i zwraca największą z nich. Zastosuj instrukcje warunkowe do porównania liczb.
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj pierwszą liczbe");
+        int liczba1= scanner.nextInt();
+        System.out.println("Podaj druga liczbe");
+        int liczba2= scanner.nextInt();
+        System.out.println("Podaj trzecia liczbe");
+        int liczba3= scanner.nextInt();
+        if(liczba1>liczba2 && liczba1>liczba3){
+            System.out.println(liczba1);
+        }
+        if(liczba2>liczba1 && liczba2>liczba3){
+            System.out.println(liczba2);
+        }
+        if(liczba1==liczba2 && liczba1==liczba3){
+            System.out.println(liczba1);
+        }
+        if(liczba3>liczba1 && liczba3>liczba2){
+            System.out.println(liczba3);
+        }
+    }
+}
+
+Napisz program, który na podstawie podanego jako argument numeru dnia tygodnia (od 1 do 7) wypisze nazwę tego dnia tygodnia. 
+Dla przykładu, jeżeli użytkownik poda liczbę 1, program powinien wypisać “Poniedziałek”. Jeżeli podana liczba nie jest z zakresu od 1 do 7, 
+program powinien wyświetlić komunikat “Niepoprawny numer dnia tygodnia”.
+
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("podaj numer tygodnia");
+        int numerdnia = scanner.nextInt();
+        switch (numerdnia) {
+            case 1:
+                System.out.println("Poniedzialek");
+                break;
+            case 2:
+                System.out.println("Wtorek");
+                break;
+            case 3:
+                System.out.println("Sroda");
+                break;
+            case 4:
+                System.out.println("CZwartek");
+                break;
+            case 5:
+                System.out.println("Piatek");
+                break;
+            case 6:
+                System.out.println("sobota");
+                break;
+            case 7:
+                System.out.println("Nidzielea");
+                break;
+            default:
+                System.out.println("Zly dzien tygodnia");
+        }
+    }
+}
+
+Napisz program, który będzie sprawdzał, czy podany rok jest rokiem przestępnym.
+Rok jest przestępny, jeśli jest podzielny przez 4, ale nie jest podzielny przez 100, chyba że jest podzielny przez 400
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj liczbe rok");
+        int rok= scanner.nextInt();
+        if(rok%4==0 && rok%100!=0){
+            System.out.println("Rok przestępny");
+        }
+        else if (rok%400==0 && rok%4==0) {
+            System.out.println("Rok przestępny");
+        }
+        else{
+            System.out.println("Rok nie przestępny");
+        }
+    }
+}
+
+
+Napisz program sprawdzający czy podane liczby z klawiatury mogą stanowić poprawna godzinę w formacie 24-godzinnym.
+Przykładowe wejście:
+Podaj godzinę: 22
+Podaj minuty: 12
+Podaj sekundy: 33
+Przykładowe wyjście:
+Poprawna godzina!
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj liczbe godzine");
+        int godzina= scanner.nextInt();
+        System.out.println("Podaj minute godzine");
+        int minuta= scanner.nextInt();
+        System.out.println("Podaj sekunde godzine");
+        int sekunda= scanner.nextInt();
+        if(godzina<24 && minuta<60 && sekunda<60){
+            System.out.println("Poprawna godzina!");
+        }
+        else{
+            System.out.println("Błędna godzina :(((");
+        }
+    }
+}
+
