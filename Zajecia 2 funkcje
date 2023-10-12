@@ -224,4 +224,131 @@ public class Main {
     }
 }
 
-//
+//Napisz metodę statyczną reverseString, która przyjmuje jako argument obiekt typu StringBuilder i zwraca nowy StringBuilder, będący odwróconym napisem pierwotnym.
+
+import java.util.*;
+public class Main {
+
+        public static StringBuilder reverseString(StringBuilder input) {
+            return new StringBuilder(input).reverse();
+        }
+
+        public static void main(String[] args) {
+            StringBuilder original = new StringBuilder("Hello, World!");
+            StringBuilder reversed = reverseString(original);
+
+            System.out.println("Oryginalny napis: " + original);
+            System.out.println("Odwrócony napis: " + reversed);
+        }
+    }
+
+//Napisz program, który tworzy listę tablicową 10 liczb całkowitych, a następnie wyświetla je w konsoli w porządku odwrotnym do wprowadzenia
+
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) {
+        ArrayList<Integer> numbersList = new ArrayList<Integer>();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Podaj 10 liczb całkowitych:");
+
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Liczba " + (i + 1) + ": ");
+            int number = scanner.nextInt();
+            numbersList.add(number);
+        }
+
+        Collections.reverse(numbersList);
+
+        System.out.println("Liczby w odwrotnym porządku:");
+
+        for (int number : numbersList) {
+            System.out.println(number);
+        }
+
+        scanner.close();
+    }
+    }
+//Napisz program, który tworzy listę tablicową 10 liczb zmiennoprzecinkowych, a następnie oblicza i wyświetla ich sumę.
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Double> numbersList = new ArrayList<Double>();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Podaj 10 liczb zmiennoprzecinkowych:");
+
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Liczba " + (i + 1) + ": ");
+            double number = scanner.nextDouble();
+            numbersList.add(number);
+        }
+
+        double sum = 0.0;
+        for (double number : numbersList) {
+            sum += number;
+        }
+
+        System.out.println("Suma liczb zmiennoprzecinkowych: " + sum);
+
+        scanner.close();
+    }
+    }
+
+//Napisz statyczną metodę average, która przyjmuje listę tablicową liczb zmiennoprzecinkowych jako argument i zwraca średnią arytmetyczną wszystkich liczb. Jeżeli lista tablicowa jest pusta, zwróć 0
+
+
+import java.util.*;
+public class Main {
+    public static double average(List<Double> numbers) {
+        if (numbers.isEmpty()) {
+            return 0.0;
+        }
+
+        double sum = 0.0;
+        for (double number : numbers) {
+            sum += number;
+        }
+
+        return sum / numbers.size();
+    }
+
+    public static void main(String[] args) {
+        List<Double> numberList = new ArrayList<>();
+        numberList.add(5.0);
+        numberList.add(10.0);
+        numberList.add(15.0);
+
+        double avg = average(numberList);
+        System.out.println("Średnia arytmetyczna: " + avg);
+
+        List<Double> emptyList = new ArrayList<>();
+        double avgEmpty = average(emptyList);
+        System.out.println("Średnia arytmetyczna pustej listy: " + avgEmpty);
+    }
+
+}
+
+//Napisz statyczną metodę countZeros, która przyjmuje listę tablicową liczb całkowitych jako argument i zwraca liczbę wystąpień zera w liście tablicowej. Na przykład, dla [0, 1, 2, 0, 3, 0, 4], funkcja powinna zwrócić 3
+
+import java.util.*;
+public class Main {
+    public static int countZeros(List<Integer> numbers) {
+        int count = 0;
+        for (int number : numbers) {
+            if (number == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> numberList = List.of(0, 1, 2, 0, 3, 0, 4);
+        int zeroCount = countZeros(numberList);
+        System.out.println("Liczba zer w liście: " + zeroCount);
+    }
+
+}
