@@ -1,1 +1,165 @@
+// Napisz metodę generateRandomInt, która generuje i zwraca losową liczbę całkowitą.
+origin i bound - jakeis granice granice generowania
+public class Main
+{
+    public static Random random = new Random();
+    public static void main(String[] args) {
+
+        System.out.println(generateRandomInt());
+    }
+    public static int generateRandomInt()
+    {
+        return random.nextInt();
+    }
+
+//Napisz metodę generateRandomDouble, która generuje i zwraca losową liczbę zmiennoprzecinkową z zakresu od 0.0 do 1.0
+
+import java.util.*;
+public class Main
+{
+    public static Random random = new Random();
+    public static void main(String[] args) {
+
+        System.out.println(generateRandomDouble());
+    }
+    public static int generateRandomInt()
+    {
+        return random.nextInt();
+    }
+    public static double generateRandomDouble(){
+
+        return random.nextDouble(1.5 , 2.0);
+    }
+}
+
+// Napisz metodę generateRandomGaussian, która generuje i zwraca losową liczbę zmiennoprzecinkową zgodnie z rozkładem normalnym.
+
+import java.util.*;
+public class Main {
+    public static double generateRandomGaussian() {
+        Random rand = new Random();
+        return rand.nextGaussian();
+    }
+
+    public static void main(String[] args) {
+        double randomValue = generateRandomGaussian();
+        System.out.println("Losowa liczba zgodna z rozkładem normalnym: " + randomValue);
+    }
+}
+
+// Napisz metodę generateRandomBoolean, która generuje i zwraca losową wartość logiczną (true lub false)
+
+import java.util.*;
+public class Main {
+    public static boolean generateRandomBoolean() {
+        Random rand = new Random();
+        return rand.nextBoolean();
+    }
+
+    public static void main(String[] args) {
+        boolean randomValue = generateRandomBoolean();
+        System.out.println("Losowa wartość logiczna: " + randomValue);
+    }
+}
+
+
+//Napisz program, który tworzy tablicę jednowymiarową 10 liczb całkowitych, a następnie wyświetla je w konsoli w porządku odwrotnym do wprowadzenia
+
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) {
+        int[] numbers = new int[10];
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Podaj 10 liczb całkowitych:");
+
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print("Liczba " + (i + 1) + ": ");
+            numbers[i] = scanner.nextInt();
+        }
+
+        System.out.println("Liczby w odwrotnym porządku:");
+
+        for (int i = numbers.length - 1; i >= 0; i--) {
+            System.out.println(numbers[i]);
+        }
+
+        scanner.close();
+    }
+}
+
+//Utwórz program, który tworzy jednowymiarową tablicę 20 liczb losowych z przedziału od 1 do 100, a następnie oblicza i wyświetla ich średnią wartość
+
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) {
+        int[] numbers = new int[20];
+        Random rand = new Random();
+
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = rand.nextInt(100) + 1;
+        }
+
+        int sum = 0;
+        for (int number : numbers)
+        {
+        sum += number;
+        }
+
+        double average = (double) sum/numbers.length;
+
+        System.out.println("Losowe liczby:");
+        for (int number : numbers) {
+            System.out.print(number + " ");
+        }
+        System.out.println("\nŚrednia wartość: " + average);
+    }
+}
+// Napisz program, który tworzy tablicę jednowymiarową 15 liczb całkowitych, a następnie oblicza i wyświetla największą i najmniejszą wartość w tablicy
+
+import java.util.*;
+public class Main {
+
+        public static void main(String[] args) {
+            int[] numbers = new int[15];
+
+            // Wypełnij tablicę liczbami całkowitymi (możesz użyć swoich wartości)
+            numbers[0] = 42;
+            numbers[1] = 15;
+            numbers[2] = 67;
+            numbers[3] = 23;
+            numbers[4] = 11;
+            numbers[5] = 98;
+            numbers[6] = 34;
+            numbers[7] = 5;
+            numbers[8] = 76;
+            numbers[9] = 21;
+            numbers[10] = 88;
+            numbers[11] = 2;
+            numbers[12] = 50;
+            numbers[13] = 7;
+            numbers[14] = 30;
+
+            // Inicjalizuj zmienne dla najmniejszej i największej wartości
+            int min = numbers[0];
+            int max = numbers[0];
+
+            // Znajdź najmniejszą i największą wartość w tablicy
+            for (int number : numbers) {
+                if (number < min) {
+                    min = number;
+                }
+                if (number > max) {
+                    max = number;
+                }
+            }
+
+            // Wyświetl najmniejszą i największą wartość
+            System.out.println("Najmniejsza wartość w tablicy: " + min);
+            System.out.println("Największa wartość w tablicy: " + max);
+        }
+}
+
 
