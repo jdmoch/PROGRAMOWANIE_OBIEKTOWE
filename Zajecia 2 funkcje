@@ -162,4 +162,66 @@ public class Main {
         }
 }
 
+//Napisz program, który przyjmuje jako wejście pojedynczy znak oraz liczbę całkowitą n. Używając klasy StringBuilder, zbuduj i wypisz piramidę o wysokości n, gdzie każdy poziom piramidy składa się z podanego znaku. Na przykład dla znaku * i n=3, oczekiwany wynik to:
 
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Podaj znak piramidy: ");
+        char symbol = scanner.next().charAt(0);
+
+        System.out.print("Podaj wysokość piramidy (liczbę całkowitą): ");
+        int height = scanner.nextInt();
+
+        scanner.close();
+
+        if (height <= 0) {
+            System.out.println("Wysokość piramidy musi być liczbą całkowitą większą od zera.");
+            return;
+        }
+
+        StringBuilder pyramid = new StringBuilder();
+        for (int i = 1; i <= height; i++) {
+            // Dodaj spacje na początku w celu uzyskania odpowiedniego wcięcia
+            for (int j = 0; j < height - i; j++) {
+                pyramid.append(" ");
+            }
+
+            // Dodaj znak na tym poziomie
+            for (int j = 0; j < 2 * i - 1; j++) {
+                pyramid.append(symbol);
+            }
+
+            // Zakończ linię
+            pyramid.append("\n");
+        }
+
+        System.out.println(pyramid.toString());
+    }
+}
+
+//Dany jest napis. Używając StringBuilder, napisz program, który usuwa wszystkie powtarzające się znaki, pozostawiając tylko pierwsze wystąpienie każdego znaku. Na przykład dla napisu “bananowy”, oczekiwany wynik to “banowy”.
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        String input = "bananowy";
+        StringBuilder result = new StringBuilder();
+        StringBuilder seen = new StringBuilder();
+
+        for (int i = 0; i < input.length(); i++) {
+            char currentChar = input.charAt(i);
+            if (seen.indexOf(String.valueOf(currentChar)) == -1) {
+                result.append(currentChar);
+                seen.append(currentChar);
+            }
+        }
+
+        System.out.println("Oryginalny napis: " + input);
+        System.out.println("Napis bez powtarzających się znaków: " + result.toString());
+    }
+}
+
+//
