@@ -38,4 +38,5 @@ public class Main
     }
 }
 
-Zad
+//Utwórz klasę Dog z polami: name, breed i age. Napisz metodę bark(), która wydrukuje na konsoli "Hau Hau".
+//Stwórz przypadek testowy, aby wywołać metodę co najmniej jeden raz.
