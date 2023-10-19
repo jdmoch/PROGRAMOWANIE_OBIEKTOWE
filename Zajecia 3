@@ -238,19 +238,133 @@ public class Czlowiek
         jan.przedstawSie(); // Wywołujemy ponownie przedstawSie, aby sprawdzić zmianę imienia
     }
 //Dodaj do klasy Czlowiek metodę zamienImionami, która jako argument przyjmuje inny obiekt klasy Czlowiek i zamienia imionami obie osoby. Utwórz dwa obiekty Czlowiek i użyj metody zamienImionami do zamiany ich imion. Następnie wywołaj metodę przedstawSie na obu obiektach. Czy imiona zostały zamienione?
-        
+public void zamienImionami(Czlowiek innyCzlowiek) {
+        String temp = this.imie;
+        this.imie = innyCzlowiek.imie;
+        innyCzlowiek.imie = temp;
+    }
+
+    public static void main(String[] args) {
+        Czlowiek jan = new Czlowiek("Jan");
+        Czlowiek anna = new Czlowiek("Anna");
+
+        jan.przedstawSie();
+        anna.przedstawSie();
+
+        jan.zamienImionami(anna);
+
+        System.out.println("Po zamianie imion:");
+        jan.przedstawSie();
+        anna.przedstawSie();
+    }
+
 //Wykonaj kolejno poniższe czynności:
        
 //Stwórz klasę Licznik z jednym polem liczba. Dodaj do klasy metodę zwieksz, która przyjmuje parametr typu int i zwiększa wartość pola liczba o wartość tego parametru. W klasie Main, utwórz zmienną typu int, przekaż ją do metody zwieksz i sprawdź, czy wartość zmiennej zmieniła się po wywołaniu metody.
-       
+       public class Licznik {
+    private int liczba;
+
+    public void zwieksz(int wartosc) {
+        liczba += wartosc;
+    }
+
+    public int getLiczba() {
+        return liczba;
+    }
+
+    public static void main(String[] args) {
+        Licznik licznik = new Licznik();
+        int wartosc = 5;
+        licznik.zwieksz(wartosc);
+        System.out.println("Wartość pola liczba: " + licznik.getLiczba());
+    }
+}
 //Dodaj do klasy Licznik metodę dodaj, która przyjmuje inny obiekt Licznik i dodaje wartość jego pola liczba do pola liczba bieżącego obiektu. Utwórz dwa obiekty Licznik w klasie Main i użyj metody dodaj. Sprawdź, czy obiekt przekazany jako argument metody dodaj zmienił swoją wartość po wywołaniu metody.
-        
-//Stwórz klasę Zmieniacz, która posiada metodę zmienWartosc, która jako argument przyjmuje typ int. Wewnątrz metody zmień wartość argumentu na inną. W klasie Main utwórz zmienną int, a następnie przekaż ją do metody zmienWartosc i sprawdź, czy wartość zmiennej się zmieniła.
-       
+        public class Licznik {
+    private int liczba;
+
+    public void dodaj(Licznik innyLicznik) {
+        liczba += innyLicznik.liczba;
+    }
+
+    public int getLiczba() {
+        return liczba;
+    }
+
+    public static void main(String[] args) {
+        Licznik licznik1 = new Licznik();
+        licznik1.liczba = 10;
+        Licznik licznik2 = new Licznik();
+        licznik2.liczba = 20;
+
+        licznik1.dodaj(licznik2);
+
+        System.out.println("Wartość pola liczba w licznik1 po dodaniu: " + licznik1.getLiczba());
+    }
+}
+ zjebane //Stwórz klasę Zmieniacz, która posiada metodę zmienWartosc, która jako argument przyjmuje typ int. Wewnątrz metody zmień wartość argumentu na inną. W klasie Main utwórz zmienną int, a następnie przekaż ją do metody zmienWartosc i sprawdź, czy wartość zmiennej się zmieniła.
+public class Zmieniacz {
+    public void zmienWartosc(int wartosc) {
+        wartosc = 42;
+    }
+
+    public static void main(String[] args) {
+        int zmienna = 10;
+        Zmieniacz zmieniacz = new Zmieniacz();
+        zmieniacz.zmienWartosc(zmienna);
+
+        System.out.println("Wartość zmiennej po wywołaniu metody zmienWartosc: " + zmienna);
+    }
+}
 //Dodaj do klasy Zmieniacz metodę zmienObiekt, która jako argument przyjmuje obiekt Licznik. Wewnątrz metody zmień wartość pola liczba obiektu Licznik na inną. W klasie Main utwórz obiekt Licznik, a następnie przekaż go do metody zmienObiekt i sprawdź, czy wartość pola liczba obiektu się zmieniła.
-       
+     public class Zmieniacz {
+    public void zmienObiekt(Licznik licznik) {
+        licznik.liczba = 42;
+    }
+
+    public static void main(String[] args) {
+        Licznik licznik = new Licznik();
+        Zmieniacz zmieniacz = new Zmieniacz();
+        zmieniacz.zmienObiekt(licznik);
+
+        System.out.println("Wartość pola liczba w obiekcie Licznik po wywołaniu metody zmienObiekt: " + licznik.getLiczba());
+    }
+}
+  
 //Utwórz klasę Osoba z publicznym polem imie oraz prywatnym polem haslo. Zobacz jak różne modyfikatory dostępu wpływają na dostęp do tych pól z innej klasy.
+public class Osoba {
+    public String imie;
+    private String haslo;
+}
+
+public class InnaKlasa {
+    public static void main(String[] args) {
+        Osoba osoba = new Osoba();
+        osoba.imie = "Jan"; // Dostęp do publicznego pola imie jest dozwolony
+        // osoba.haslo = "TajneHaslo"; // To spowoduje błąd kompilacji, ponieważ haslo jest prywatne
+    }
+}
 
 //Do klasyCar dodaj prywatną metodę blowEngine(). Spróbuj ją wywołać na dowolnym istniejącym obiekcie w innej klasie.
 
+public class Car {
+    private void blowEngine() {
+        System.out.println("Silnik wybuchł!");
+    }
+
+    public static void main(String[] args) {
+        Car car = new Car();
+        // car.blowEngine(); // To spowoduje błąd kompilacji, ponieważ metoda blowEngine() jest prywatna i nie jest dostępna z innej klasy
+    }
+}
 //Stwórz klasę Trener, która jest zadeklarowana jako private. Spróbuj stworzyć obiekt Trener w klasie Main. Jaki jest rezultat?
+
+private class Trener {
+    // Kod klasy Trener
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Trener trener = new Trener(); // To spowoduje błąd kompilacji, ponieważ klasa Trener jest zadeklarowana jako private i nie jest dostępna z zewnątrz
+    }
+}
