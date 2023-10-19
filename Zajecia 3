@@ -106,4 +106,43 @@ public class Main
         myCar.decelerate(70);
     }
 }
-//Stwórz klasę Time z polami: hours i minutes. Napisz metodę addTime(Time otherTime), która dodaje do bieżącego czasu czas podany jako argument i zwraca nowy obiekt klasy Time. Zadbaj o to, aby minuty i godziny nie przekraczały odpowiednio 59 i 23. Stwórz przypadek testowy, aby wywołać metodę co najmniej jeden ra
+//Stwórz klasę Time z polami: hours i minutes. Napisz metodę addTime(Time otherTime), która dodaje do bieżącego czasu czas podany jako argument i zwraca nowy obiekt klasy Time. Zadbaj o to, aby minuty i godziny nie przekraczały odpowiednio 59 i 23. Stwórz przypadek testowy, aby wywołać metodę co najmniej jeden raz.
+public class Time {
+    private int hours;
+    private int minutes;
+
+    public Time(int hours, int minutes) {
+        this.hours = hours;
+        this.minutes = minutes;
+    }
+
+    public Time addTime(Time otherTime) {
+        int newMinutes = this.minutes + otherTime.minutes;
+        int newHours = this.hours + otherTime.hours;
+
+        if (newMinutes >= 60) {
+            newMinutes -= 60;
+            newHours++;
+        }
+
+        newHours = newHours % 24;  // Ograniczenie na godziny do 0-23
+
+        return new Time(newHours, newMinutes);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%02d:%02d", hours, minutes);
+    }
+
+    public static void main(String[] args) {
+        Time currentTime = new Time(10, 30);
+        Time otherTime = new Time(3, 45);
+
+        System.out.println("Current Time: " + currentTime);
+        System.out.println("Other Time: " + otherTime);
+
+        Time newTime = currentTime.addTime(otherTime);
+        System.out.println("New Time after addition: " + newTime);
+    }
+}
