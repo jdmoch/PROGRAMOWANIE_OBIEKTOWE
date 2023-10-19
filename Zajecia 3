@@ -1,1 +1,41 @@
+Plik House.java
+public class House {
+    public int area; // powierzchnia
+    public boolean garage; //czy ma garaz
+    public int rooms; //ile pokoi
+    public boolean garden; //czy ma ogrod
+    public int floors; //ile ma pieter
 
+    public int getValue()
+    {
+        return area * 3000;
+    }
+}
+
+Plik Main.java
+public class Main
+{
+    public static void main(String[] args)
+    {
+        House domStefana = new House();
+        domStefana.garage = true;
+        domStefana.rooms = 6;
+        domStefana.area = 150;
+        domStefana.floors = 2;
+        domStefana.garden = false;
+
+        System.out.println(domStefana.getValue());
+
+        House domSylwii = new House();
+        domSylwii.garden = true;
+        domSylwii.garage = false;
+        domSylwii.area = 175;
+        domSylwii.rooms = 4;
+        domSylwii.floors = 2;
+
+        System.out.println(domSylwii.getValue());
+
+    }
+}
+
+Zad
