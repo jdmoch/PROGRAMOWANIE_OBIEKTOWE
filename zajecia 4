@@ -1,1 +1,38 @@
+//Napisz klasę Ksiazka, która będzie zawierać trzy pola: tytul, autor, rokWydania. Następnie zaimplementuj dwa konstruktory - jeden domyślny, który nie przyjmuje żadnych argumentów, i drugi, który przyjmuje trzy argumenty odpowiadające polom klasy. W przypadku drugiego konstruktora, nazwy parametrów muszą być takie same jak nazwy pól. Sprawdź czy jesteś w stanie prawidłowo przypisać wartości do pól klasy używając słowa kluczowego this.
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Ksiazka k1 = new Ksiazka();
+        System.out.println();
+        Ksiazka k2 = new Ksiazka("Ostatnie zyczenie",
+                "Andrzej Sapkowski",
+                 1993);
+        System.out.println(k2.Autor);
 
+    }
+}
+public class Ksiazka
+{
+    public String Autor;
+    public String Tytul;
+    public int rokWydania;
+
+    public Ksiazka()
+    {
+        Tytul = "default";
+        Autor = "default";
+        rokWydania = 2023;
+    }
+
+    public Ksiazka(String Tytul, String Autor, int rokWydania)
+    {
+        this.Tytul = Tytul;
+        this.Autor = Autor;
+        this.rokWydania = rokWydania;
+    }
+}
+//Stwórz klasę Samochod, która będzie zawierać trzy pola: marka, model, rokProdukcji. Zaimplementuj trzy konstruktory - pierwszy domyślny, drugi przyjmujący dwa argumenty (marka i model), trzeci przyjmujący trzy argumenty (marka, model, rokProdukcji). W przypadku drugiego i trzeciego konstruktora, nazwy parametrów muszą być takie same jak nazwy pól. Wykorzystaj słowo kluczowe this do rozróżnienia pól klasy od parametrów.
+//Napisz klasę Osoba, która będzie miała pola: imie, nazwisko i wiek. Zdefiniuj w niej dwa konstruktory, jeden przyjmujący wszystkie trzy parametry, a drugi tylko imię i nazwisko. Drugi konstruktor powinien wywołać pierwszy, przekazując mu domyślną wartość wieku jako 0.
+//Zaprojektuj klasę Kwadrat, która posiada pole bok oraz konstruktor, który umożliwia ustawienie wartości tego pola. Następnie napisz drugi konstruktor, który nie przyjmuje żadnych argumentów, a jedynie wywołuje pierwszy konstruktor z wartością domyślną 1
+//Napisz klasę Student, która ma pola: imie, nazwisko i kierunekStudiow. Zdefiniuj w niej dwa konstruktory, jeden przyjmujący wszystkie trzy parametry, a drugi tylko imię i nazwisko. Drugi konstruktor powinien wywoływać pierwszy, przekazując mu domyślną wartość kierunku studiów jako nieznany
