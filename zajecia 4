@@ -12,6 +12,7 @@ public class Main
 
     }
 }
+----------------------
 public class Ksiazka
 {
     public String Autor;
@@ -33,6 +34,245 @@ public class Ksiazka
     }
 }
 //Stwórz klasę Samochod, która będzie zawierać trzy pola: marka, model, rokProdukcji. Zaimplementuj trzy konstruktory - pierwszy domyślny, drugi przyjmujący dwa argumenty (marka i model), trzeci przyjmujący trzy argumenty (marka, model, rokProdukcji). W przypadku drugiego i trzeciego konstruktora, nazwy parametrów muszą być takie same jak nazwy pól. Wykorzystaj słowo kluczowe this do rozróżnienia pól klasy od parametrów.
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Samochod s1 = new Samochod();
+        System.out.println(s1.model);
+        Samochod s2 = new Samochod("Subaru",
+                "Impreza",
+                1999);
+        System.out.println(s2.marka);
+        System.out.println(s2.rokprodukcji);
+    }
+}
+------------------------
+public class Samochod
+{
+    public String marka;
+    public String model;
+    public int rokprodukcji;
+    public Samochod()
+    {
+
+    }
+    public Samochod(String marka, String model)
+    {
+        this.marka = marka;
+        this.model = model;
+    }
+
+    public Samochod(String marka, String model, int rokprodukcji)
+    {
+        this.marka = marka;
+        this.model = model;
+        this.rokprodukcji = rokprodukcji;
+    }
+
+}
+
 //Napisz klasę Osoba, która będzie miała pola: imie, nazwisko i wiek. Zdefiniuj w niej dwa konstruktory, jeden przyjmujący wszystkie trzy parametry, a drugi tylko imię i nazwisko. Drugi konstruktor powinien wywołać pierwszy, przekazując mu domyślną wartość wieku jako 0.
+public class Main
+{
+    public static void main(String[] args)
+    {
+       Osoba os1 = new Osoba("Jakub","Kozicki");
+        System.out.println(os1.wiek);
+        System.out.println(os1.imie);
+    }
+}
+
+public class Osoba {
+    public String imie;
+    public String nazwisko;
+    public int wiek;
+
+    public Osoba(String imie, String nazwisko, int wiek)
+    {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.wiek = wiek;
+    }
+
+    public Osoba(String imie, String nazwisko)
+    {
+        this(imie,nazwisko,0);
+    }
+}
+
+
 //Zaprojektuj klasę Kwadrat, która posiada pole bok oraz konstruktor, który umożliwia ustawienie wartości tego pola. Następnie napisz drugi konstruktor, który nie przyjmuje żadnych argumentów, a jedynie wywołuje pierwszy konstruktor z wartością domyślną 1
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Kwadrat k1 = new Kwadrat();
+        System.out.println(k1.bok);
+        Kwadrat k2 = new Kwadrat(15);
+        System.out.println(k2.bok);
+    }
+} 
+public class Kwadrat {
+    public int bok;
+
+    public Kwadrat(int bok)
+    {
+        this.bok = bok;
+    }
+
+    public Kwadrat()
+    {
+        this(1);
+    }
+}
+
 //Napisz klasę Student, która ma pola: imie, nazwisko i kierunekStudiow. Zdefiniuj w niej dwa konstruktory, jeden przyjmujący wszystkie trzy parametry, a drugi tylko imię i nazwisko. Drugi konstruktor powinien wywoływać pierwszy, przekazując mu domyślną wartość kierunku studiów jako nieznany
+ Student st1 = new Student("Jan","Kowalski");
+        System.out.println(st1.nazwisko);
+        System.out.println(st1.kierunekStudiow);
+
+public class Student {
+    public String imie;
+    public String nazwisko;
+    public String kierunekStudiow;
+
+    public Student(String imie, String nazwisko, String kierunekStudiow)
+    {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.kierunekStudiow = kierunekStudiow;
+    }
+
+    public Student(String imie, String nazwisko)
+    {
+        this(imie, nazwisko, "nieznany");
+    }
+}
+//Stwórz klasę Osoba. Klasa powinna zawierać pole imienne oraz statyczne pole licznik. Zadaniem jest zwiększanie wartości licznik za każdym razem, gdy tworzona jest nowa instancja klasy Osoba. Dodaj metodę, która zwróci wartość licznik. Stwórz przypadek testowy
+System.out.println(Osoba2.zwrocLicznik());  
+Osoba2 o1 = new Osoba2();
+        System.out.println(Osoba2.zwrocLicznik());
+        Osoba2 o2 = new Osoba2();
+        Osoba2 o3 = new Osoba2();
+        System.out.println(Osoba2.zwrocLicznik());
+        System.out.println(Osoba2.zwrocLicznik());
+
+public class Osoba2 {
+    public String imie;
+    public static int licznik;
+
+    public Osoba2()
+    {
+        this("Default");
+    }
+
+    public Osoba2(String imie)
+    {
+        this.imie = imie;
+        licznik++;
+    }
+
+    public static int zwrocLicznik()
+    {
+        return licznik;
+    }
+}
+
+//Stwórz klasę Matematyka, która posiada pole statyczne PI, które przechowuje przybliżoną wartość liczby . Upewnij się, że wartość tego pola jest niemutowalna. Stwórz przypadek testowy
+ public class Matematyka {
+    // Pole statyczne PI
+    public static final double PI = 3.14159265359; // Przybliżona wartość liczby π (pi)
+
+    // Konstruktor prywatny, aby zapobiec tworzeniu instancji klasy Matematyka
+    private Matematyka() {
+    }
+
+    // Metoda testowa
+    public static void main(String[] args) {
+        // Sprawdź wartość pola PI
+        System.out.println("Wartość pola PI: " + Matematyka.PI);
+
+        // Próba zmiany wartości pola PI spowoduje błąd kompilacji
+        // Matematyka.PI = 3.14; // To spowoduje błąd kompilacji
+    }
+}
+
+//Stwórz klasę Kalkulator, która posiada podstawowe metody matematyczne: dodawanie, odejmowanie, mnożenie i dzielenie. Zaimplementuj te metody jako metody statyczne. Utwórz drugą klasę, w której przetestujesz te metody bez tworzenia instancji klasy Kalkulator
+public class Kalkulator {
+    // Metoda statyczna do dodawania
+    public static double dodaj(double a, double b) {
+        return a + b;
+    }
+
+    // Metoda statyczna do odejmowania
+    public static double odejmij(double a, double b) {
+        return a - b;
+    }
+
+    // Metoda statyczna do mnożenia
+    public static double pomnóż(double a, double b) {
+        return a * b;
+    }
+
+    // Metoda statyczna do dzielenia
+    public static double podziel(double a, double b) {
+        if (b != 0) {
+            return a / b;
+        } else {
+            throw new IllegalArgumentException("Dzielenie przez zero jest niedozwolone.");
+        }
+    }
+}
+
+public class TestKalkulatora {
+    public static void main(String[] args) {
+        // Wywołanie metod matematycznych bez tworzenia instancji klasy Kalkulator
+        double wynikDodawania = Kalkulator.dodaj(5, 3);
+        double wynikOdejmowania = Kalkulator.odejmij(10, 4);
+        double wynikMnożenia = Kalkulator.pomnóż(6, 7);
+        double wynikDzielenia = Kalkulator.podziel(8, 2);
+
+        System.out.println("Wynik dodawania: " + wynikDodawania);
+        System.out.println("Wynik odejmowania: " + wynikOdejmowania);
+        System.out.println("Wynik mnożenia: " + wynikMnożenia);
+        System.out.println("Wynik dzielenia: " + wynikDzielenia);
+    }
+}
+
+//Stwórz klasę Produkt, która zawiera pole statyczne liczbaProduktow oraz pole statyczne MAX_PRODUKTOW. Pole liczbaProduktow będzie służyć do zliczania ilości utworzonych produktów, a MAX_PRODUKTOW do ograniczenia ich liczby. Oznacz tylko jedno z tych pól słowem kluczowym final i zastanów się nad konsekwencjami tego wyboru.
+ public class Produkt {
+    // Pole statyczne liczbaProduktow
+    private static int liczbaProduktow = 0;
+    
+    // Pole statyczne MAX_PRODUKTOW
+    public static final int MAX_PRODUKTOW = 100;
+
+    // Konstruktor
+    public Produkt() {
+        if (liczbaProduktow < MAX_PRODUKTOW) {
+            liczbaProduktow++;
+        } else {
+            System.out.println("Osiągnięto maksymalną liczbę produktów.");
+        }
+    }
+
+    // Metoda do pobierania liczby utworzonych produktów
+    public static int pobierzLiczbeProduktow() {
+        return liczbaProduktow;
+    }
+}
+
+public class TestProduktu {
+    public static void main(String[] args) {
+        // Tworzenie produktów
+        Produkt produkt1 = new Produkt();
+        Produkt produkt2 = new Produkt();
+        Produkt produkt3 = new Produkt();
+        
+        // Wyświetlanie liczby produktów
+        System.out.println("Liczba utworzonych produktów: " + Produkt.pobierzLiczbeProduktow());
+    }
+}
+
+//Stwórz klasę Singleton, która używa pola statycznego do przechowywania jednej i tylko jednej instancji tej klasy. Klasa powinna zawierać prywatny konstruktor oraz publiczną statyczną metodę getInstance(), która zwraca jedyną instancję klasy Singleton. Stwórz przypadek testowy.
