@@ -82,7 +82,7 @@ public class Main
         System.out.println(os1.imie);
     }
 }
-
+------------------------
 public class Osoba {
     public String imie;
     public String nazwisko;
@@ -113,6 +113,8 @@ public class Main
         System.out.println(k2.bok);
     }
 } 
+------------------------
+
 public class Kwadrat {
     public int bok;
 
@@ -128,10 +130,16 @@ public class Kwadrat {
 }
 
 //Napisz klasę Student, która ma pola: imie, nazwisko i kierunekStudiow. Zdefiniuj w niej dwa konstruktory, jeden przyjmujący wszystkie trzy parametry, a drugi tylko imię i nazwisko. Drugi konstruktor powinien wywoływać pierwszy, przekazując mu domyślną wartość kierunku studiów jako nieznany
- Student st1 = new Student("Jan","Kowalski");
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Student st1 = new Student("Jan","Kowalski");
         System.out.println(st1.nazwisko);
         System.out.println(st1.kierunekStudiow);
-
+    }
+}  
+------------------------
 public class Student {
     public String imie;
     public String nazwisko;
@@ -150,14 +158,20 @@ public class Student {
     }
 }
 //Stwórz klasę Osoba. Klasa powinna zawierać pole imienne oraz statyczne pole licznik. Zadaniem jest zwiększanie wartości licznik za każdym razem, gdy tworzona jest nowa instancja klasy Osoba. Dodaj metodę, która zwróci wartość licznik. Stwórz przypadek testowy
-System.out.println(Osoba2.zwrocLicznik());  
-Osoba2 o1 = new Osoba2();
+public class Main
+{
+    public static void main(String[] args)
+    {
+      System.out.println(Osoba2.zwrocLicznik());  
+        Osoba2 o1 = new Osoba2();
         System.out.println(Osoba2.zwrocLicznik());
         Osoba2 o2 = new Osoba2();
         Osoba2 o3 = new Osoba2();
         System.out.println(Osoba2.zwrocLicznik());
         System.out.println(Osoba2.zwrocLicznik());
-
+    }
+} 
+------------------------
 public class Osoba2 {
     public String imie;
     public static int licznik;
@@ -178,8 +192,8 @@ public class Osoba2 {
         return licznik;
     }
 }
-
 //Stwórz klasę Matematyka, która posiada pole statyczne PI, które przechowuje przybliżoną wartość liczby . Upewnij się, że wartość tego pola jest niemutowalna. Stwórz przypadek testowy
+
  public class Matematyka {
     // Pole statyczne PI
     public static final double PI = 3.14159265359; // Przybliżona wartość liczby π (pi)
@@ -187,7 +201,7 @@ public class Osoba2 {
     // Konstruktor prywatny, aby zapobiec tworzeniu instancji klasy Matematyka
     private Matematyka() {
     }
-
+------------------------
     // Metoda testowa
     public static void main(String[] args) {
         // Sprawdź wartość pola PI
@@ -197,8 +211,8 @@ public class Osoba2 {
         // Matematyka.PI = 3.14; // To spowoduje błąd kompilacji
     }
 }
-
 //Stwórz klasę Kalkulator, która posiada podstawowe metody matematyczne: dodawanie, odejmowanie, mnożenie i dzielenie. Zaimplementuj te metody jako metody statyczne. Utwórz drugą klasę, w której przetestujesz te metody bez tworzenia instancji klasy Kalkulator
+
 public class Kalkulator {
     // Metoda statyczna do dodawania
     public static double dodaj(double a, double b) {
@@ -224,6 +238,7 @@ public class Kalkulator {
         }
     }
 }
+------------------------
 
 public class TestKalkulatora {
     public static void main(String[] args) {
@@ -241,7 +256,8 @@ public class TestKalkulatora {
 }
 
 //Stwórz klasę Produkt, która zawiera pole statyczne liczbaProduktow oraz pole statyczne MAX_PRODUKTOW. Pole liczbaProduktow będzie służyć do zliczania ilości utworzonych produktów, a MAX_PRODUKTOW do ograniczenia ich liczby. Oznacz tylko jedno z tych pól słowem kluczowym final i zastanów się nad konsekwencjami tego wyboru.
- public class Produkt {
+ 
+public class Produkt {
     // Pole statyczne liczbaProduktow
     private static int liczbaProduktow = 0;
     
@@ -262,7 +278,7 @@ public class TestKalkulatora {
         return liczbaProduktow;
     }
 }
-
+------------------------
 public class TestProduktu {
     public static void main(String[] args) {
         // Tworzenie produktów
@@ -276,3 +292,4 @@ public class TestProduktu {
 }
 
 //Stwórz klasę Singleton, która używa pola statycznego do przechowywania jednej i tylko jednej instancji tej klasy. Klasa powinna zawierać prywatny konstruktor oraz publiczną statyczną metodę getInstance(), która zwraca jedyną instancję klasy Singleton. Stwórz przypadek testowy.
+
