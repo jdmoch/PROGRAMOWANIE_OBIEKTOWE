@@ -1,11 +1,158 @@
 1.Napisz statyczną metodę mergeArrays, która przyjmuje dwie tablice liczb całkowitych jako argumenty. Funkcja powinna zwrócić nową listę tablicową, która jest połączeniem obu pierwotnych tablic. 
 Na przykład, dla list tablicowych [1, 2, 3] i [4, 5, 6], funkcja powinna zwrócić [1, 2, 3, 4, 5, 6]. Stwórz przypadek testowy.
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ArrayMerger {
+    public static void main(String[] args) {
+        // Przykład użycia
+        int[] array1 = {1, 2, 3};
+        int[] array2 = {4, 5, 6};
+
+        List<Integer> mergedList = mergeArrays(array1, array2);
+        System.out.println(mergedList);  // Powinno wyświetlić: [1, 2, 3, 4, 5, 6]
+    }
+
+    public static List<Integer> mergeArrays(int[] array1, int[] array2) {
+        List<Integer> mergedList = new ArrayList<>();
+
+        // Dodawanie elementów z pierwszej tablicy
+        for (int value : array1) {
+            mergedList.add(value);
+        }
+
+        // Dodawanie elementów z drugiej tablicy
+        for (int value : array2) {
+            mergedList.add(value);
+        }
+
+        return mergedList;
+    }
+}
+
+
 2.Napisz klasę Student, która ma pola: firstName, lastName i fieldOfStudy. Zdefiniuj w niej dwa konstruktory, jeden przyjmujący wszystkie trzy parametry, a drugi tylko firstName i lastName. 
 Drugi konstruktor powinien wywoływać pierwszy, przekazując mu domyślną wartość fieldOfStudy jako unknown.
+public class Student {
+    private String firstName;
+    private String lastName;
+    private String fieldOfStudy;
+
+    // Konstruktor przyjmujący wszystkie trzy parametry
+    public Student(String firstName, String lastName, String fieldOfStudy) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fieldOfStudy = fieldOfStudy;
+    }
+
+    // Konstruktor przyjmujący tylko firstName i lastName,
+    // wywołujący pierwszy konstruktor z domyślną wartością fieldOfStudy jako "unknown"
+    public Student(String firstName, String lastName) {
+        this(firstName, lastName, "unknown");
+    }
+
+    // Gettery i settery (opcjonalnie)
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFieldOfStudy() {
+        return fieldOfStudy;
+    }
+
+    public void setFieldOfStudy(String fieldOfStudy) {
+        this.fieldOfStudy = fieldOfStudy;
+    }
+
+    // Przykład użycia
+    public static void main(String[] args) {
+        // Użycie konstruktora z wszystkimi parametrami
+        Student student1 = new Student("Jan", "Kowalski", "Informatyka");
+        System.out.println(student1.getFirstName() + " " + student1.getLastName() + ", " + student1.getFieldOfStudy());
+
+        // Użycie konstruktora z dwoma parametrami (firstName i lastName)
+        Student student2 = new Student("Anna", "Nowak");
+        System.out.println(student2.getFirstName() + " " + student2.getLastName() + ", " + student2.getFieldOfStudy());
+    }
+}
 
 3.Stwórz klasę bazową o nazwie Vehicle z polami: brand i model. Klasa ta powinna posiadać konstruktor przyjmujący oba te parametry. Następnie stwórz klasę potomną o nazwie Car, która dziedziczy po klasie Vehicle.
 Klasa Car powinna posiadać dodatkowe pole numberOfDoors. Stwórz konstruktor dla klasy Car, który przyjmuje wszystkie trzy parametry i korzysta z konstruktora klasy bazowej. Stwórz przypadek testowy.
+
+public class Vehicle {
+    private String brand;
+    private String model;
+
+    // Konstruktor przyjmujący oba parametry
+    public Vehicle(String brand, String model) {
+        this.brand = brand;
+        this.model = model;
+    }
+
+    // Gettery i settery (opcjonalnie)
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+}
+
+public class Car extends Vehicle {
+    private int numberOfDoors;
+
+    // Konstruktor przyjmujący trzy parametry, korzystający z konstruktora klasy bazowej
+    public Car(String brand, String model, int numberOfDoors) {
+        super(brand, model);
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    // Getter i setter dla numberOfDoors (opcjonalnie)
+
+    public int getNumberOfDoors() {
+        return numberOfDoors;
+    }
+
+    public void setNumberOfDoors(int numberOfDoors) {
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    // Przykład użycia
+    public static void main(String[] args) {
+        // Utworzenie obiektu klasy Car
+        Car myCar = new Car("Toyota", "Camry", 4);
+
+        // Wyświetlenie informacji o pojeździe
+        System.out.println("Brand: " + myCar.getBrand());
+        System.out.println("Model: " + myCar.getModel());
+        System.out.println("Number of Doors: " + myCar.getNumberOfDoors());
+    }
+}
 
 4.Wykonaj poniższe czynności:
 -Zdefiniuj klasę Book, która posiada następujące pola: title, author i numberOfPages.
@@ -15,7 +162,90 @@ Klasa Car powinna posiadać dodatkowe pole numberOfDoors. Stwórz konstruktor dl
 -Dodaj metodę toString(), która zwraca informacje o książce w formacie: "Book: [title] by [author], Pages: [numberOfPages]."
 -Dodaj metodę equals(), która porównuje dwie książki na podstawie ich pól title, author i numberOfPages
 
+public class Book {
+    private String title;
+    private String author;
+    private int numberOfPages;
+
+    // Konstruktor z walidacją argumentów
+    public Book(String title, String author, int numberOfPages) {
+        // Walidacja i ustawianie pola title
+        if (title != null && !title.isEmpty()) {
+            this.title = title;
+        } else {
+            this.title = "";
+        }
+
+        // Walidacja i ustawianie pola author
+        if (author != null && !author.isEmpty()) {
+            this.author = author;
+        } else {
+            this.author = "";
+        }
+
+        // Walidacja i ustawianie pola numberOfPages
+        this.numberOfPages = (numberOfPages >= 0) ? numberOfPages : 1;
+    }
+
+    // Metoda toString() do wygenerowania informacji o książce
+    @Override
+    public String toString() {
+        return "Book: " + title + " by " + author + ", Pages: " + numberOfPages;
+    }
+
+    // Metoda equals() do porównywania dwóch książek
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Book otherBook = (Book) obj;
+        return title.equals(otherBook.title) && author.equals(otherBook.author) && numberOfPages == otherBook.numberOfPages;
+    }
+
+    // Przykład użycia
+    public static void main(String[] args) {
+        // Utworzenie obiektu klasy Book z poprawnymi danymi
+        Book book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 300);
+        System.out.println(book1);
+
+        // Utworzenie obiektu klasy Book z niepoprawnymi danymi
+        Book book2 = new Book(null, "", -50);
+        System.out.println(book2);
+    }
+}
+
 5.Wykonaj kolejno poniższe czynności:
 Stwórz klasę bazową Vehicle z metodą drive, która wypisuje “The vehicle is moving.”. 
 Następnie stwórz klasę potomną Car, która nadpisuje metodę drive tak,  by wywoływała oryginalną metodę z klasy bazowej i dodatkowo wypisywała informacje specyficzne dla klasy Car. 
 Użyj słowa kluczowego super, aby wywołać metodę z klasy bazowej.
+// Klasa bazowa
+class Vehicle {
+    // Metoda drive wypisująca informację ogólną dla pojazdu
+    public void drive() {
+        System.out.println("The vehicle is moving.");
+    }
+}
+
+// Klasa potomna Car dziedzicząca po klasie Vehicle
+class Car extends Vehicle {
+    // Nadpisanie metody drive
+    @Override
+    public void drive() {
+        // Wywołanie oryginalnej metody z klasy bazowej przy użyciu słowa kluczowego super
+        super.drive();
+
+        // Dodatkowe informacje specyficzne dla klasy Car
+        System.out.println("The car is accelerating.");
+    }
+}
+// Przykład użycia
+public class Main {
+    public static void main(String[] args) {
+        // Utworzenie obiektu klasy Car
+        Car myCar = new Car();
+
+        // Wywołanie metody drive dla obiektu klasy Car
+        myCar.drive();
+    }
+}
+
