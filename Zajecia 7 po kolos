@@ -1,1 +1,79 @@
+rekordy, hashe
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Person person = new Person("Stefan", 30);
+        Person person2 = new Person("Stefan", 30);
+        System.out.println(person);
+        System.out.println(person.equals(person2));
+        person.greet();
+
+        //Book
+        BookDTO book1 = new BookDTO("Dziady", "Adam Mickiewicz", 20.5, 2015);
+        BookDTO book2 = new BookDTO("tytul2", "autor2", 25.5, 2019);
+        System.out.println(book1);
+        System.out.println(book2);
+
+        //Address
+        Address ad1 = new Address("Prosta", 1, 10234, "Poznan");
+        Person2 p2 = new Person2("Jan", "Nowak", ad1);
+        System.out.println(p2);
+
+        //Student
+        ArrayList<Integer> oceny = new ArrayList<>();
+        oceny.add(4);
+        oceny.add(5);
+        oceny.add(2);
+        Student student = new Student("Jan", "Kowalski", oceny);
+        student.averageGrades();
+
+
+        //Order
+        Product product1 = new Product("Mleko", 6.00);
+        Product product2 = new Product("Chleb", 7.50);
+        Product product3 = new Product("Piwo", 3.49);
+        ArrayList<Product> produkty = new ArrayList<>();
+        produkty.add(product1);
+        produkty.add(product2);
+        produkty.add(product3);
+        Order order = new Order(produkty);
+        System.out.println(order);
+        order.totalValue();
+    }
+}
+
+Plik BookDTO.java
+public record BookDTO(String title, String author, double price, int yearOfPublication)
+{
+
+
+}
+Plik person.java
+public record Person(String name, int age) {
+    public Person{
+        if(name.isBlank() || name == null){
+            name = "unknown";
+        }
+        if(age < 0){
+            age = 0;
+        }
+    }
+
+    Person(String name){
+        this(name, 0);
+    }
+
+    public void greet(){
+        System.out.println("Czesc!");
+    }
+
+}
+Plik person2.java
+public record Person2(String firstName, String lastName, Address adres)
+{
+
+}
 
