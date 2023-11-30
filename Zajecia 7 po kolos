@@ -44,6 +44,8 @@ public class Main {
         order.totalValue();
     }
 }
+//Stwórz rekord BookDTO, który reprezentuje książkę w sklepie internetowym. Powinien zawierać takie informacje jak title, author, price i yearOfPublication. 
+Następnie stwórz kilka instancji tego rekordu, reprezentujących różne książki.
 
 Plik BookDTO.java
 public record BookDTO(String title, String author, double price, int yearOfPublication)
@@ -51,6 +53,7 @@ public record BookDTO(String title, String author, double price, int yearOfPubli
 
 
 }
+
 Plik person.java
 public record Person(String name, int age) {
     public Person{
@@ -106,3 +109,67 @@ public class Animal {
     }
 }
 
+//BankAccount, który zawiera numer konta oraz saldo. Dodaj konstruktor, który pozwala na tworzenie konta tylko z numerem, 
+//przy czym domyślne saldo wynosi 0. Stwórz przypadek testowy.
+
+public record BankAccount(String accountNumber, double balance) {
+    // Konstruktor z domyślnym saldem 0
+    public BankAccount(String accountNumber) {
+        this(accountNumber, 0);
+    }
+
+    // Przypadek testowy
+    public static void main(String[] args) {
+        BankAccount account1 = new BankAccount("1234567890");
+        System.out.println("Account Number: " + account1.accountNumber() + ", Balance: " + account1.balance());
+    }
+}
+
+//MusicTrack, który opisuje tytuł, artystę i czas trwania utworu w sekundach. Dodaj konstruktor, który przyjmuje tylko tytuł i artystę, przyjmując domyślną długość utworu jako 180 sekund. Stwórz przypadek testowy.
+public record MusicTrack(String title, String artist, int durationInSeconds) {
+
+    // Konstruktor z domyślną długością utworu (180 sekund)
+    public MusicTrack(String title, String artist) {
+        this(title, artist, 180);
+    }
+
+    // Przypadek testowy
+    public static void main(String[] args) {
+        MusicTrack track1 = new MusicTrack("In the End", "Linkin Park");
+        System.out.println("Track 1: " + track1);
+
+        MusicTrack track2 = new MusicTrack("Shape of You", "Ed Sheeran", 240);
+        System.out.println("Track 2: " + track2);
+    }
+}
+
+//Stwórz rekord Car, który zawiera brand, model i fuelConsumptionPer100km. Dodaj metodę fuelCost(double fuelPrice, double distance), która oblicza i zwraca koszt podróży na podstawie podanej ceny paliwa oraz dystansu. Stwórz przypadek testowy.
+
+public record Car(String brand, String model, double fuelConsumptionPer100km) {
+    public double fuelCost(double fuelPrice, double distance) {
+        double fuelNeeded = (fuelConsumptionPer100km / 100) * distance;
+        return fuelNeeded * fuelPrice;
+    }
+
+    // Przypadek testowy
+    public static void main(String[] args) {
+        Car myCar = new Car("Toyota", "Camry", 7.5);
+        double fuelPrice = 4.5; // cena paliwa za litr
+        double distance = 200; // dystans w kilometrach
+
+        double cost = myCar.fuelCost(fuelPrice, distance);
+        System.out.println("Cost of the trip: $" + cost);
+    }
+}
+
+//Utwórz rekord Address, który zawiera street, houseNumber, postalCode i city. Następnie, stwórz rekord Person, 
+//który oprócz podstawowych informacji o osobie (np. firstName, lastName) zawiera również pole typu Address. Stwórz przypadek testowy.
+public record Address(String street, int houseNumber, int postalCode, String city)
+{
+
+
+}
+
+Address ad1 = new Address("Prosta", 1, 10234, "Poznan");
+        Person2 p2 = new Person2("Jan", "Nowak", ad1);
+        System.out.println(p2);
