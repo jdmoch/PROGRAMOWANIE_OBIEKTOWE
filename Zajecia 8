@@ -111,15 +111,125 @@ Zad.1
 Napisz klasę Ksiazka, która zawiera pola: tytul (typu String), liczbaStron (typu int) i dataWydania (typu LocalDate). 
 Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Ksiazka były sortowane malejąco według liczby stron. 
 Stwórz tablicę 4 obiektów klasy Ksiazka i posortuj ją według sprecyzowanego kryterium.
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class Ksiazka implements Comparable<Ksiazka> {
+    String tytul;
+    int liczbaStron;
+    LocalDate dataWydarzenia;
+
+    public Ksiazka(String tytul, int liczbaStron, LocalDate dataWydarzenia) {
+        this.tytul = tytul;
+        this.liczbaStron = liczbaStron;
+        this.dataWydarzenia = dataWydarzenia;
+    }
+
+    public String getTytul() {
+        return tytul;
+    }
+
+    public int getLiczbaStron() {
+        return liczbaStron;
+    }
+
+    public LocalDate getDataWydarzenia() {
+        return dataWydarzenia;
+    }
+
+    public Ksiazka() {
+    }
+
+    @Override
+    public int compareTo(Ksiazka o) {
+        return Integer.compare(o.liczbaStron, this.liczbaStron);
+    }
+
+    @Override
+    public String toString() {
+        return " Ksiazka " +
+                " tytul " + tytul +
+                " liczbaStron " + liczbaStron +
+                " dataWydarzenia " + dataWydarzenia;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Ksiazka> KsiazkaList = new ArrayList<>();
+        KsiazkaList.add(new Ksiazka("wiedzmin", 400, LocalDate.of(1993, 5, 1)));
+        KsiazkaList.add(new Ksiazka("ugabuga", 4030, LocalDate.of(1923, 1, 5)));
+        KsiazkaList.add(new Ksiazka("ddd", 410, LocalDate.of(1323, 4, 2)));
+        KsiazkaList.add(new Ksiazka("dasd", 123, LocalDate.of(1634, 11, 3)));
+        System.out.println(KsiazkaList);
+        Collections.sort(KsiazkaList);
+        System.out.println(KsiazkaList);
+    }
+}
 
 Zad.2
 Napisz klasę Samochod, która zawiera pola: marka (typu String), przebieg (typu int) i rokProdukcji (typu int). 
 Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Samochod były sortowane rosnąco według przebiegu. Stwórz tablicę 4 obiektów klasy Samochod i posortuj ją według sprecyzowanego kryterium.
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Samochod implements Comparable<Samochod> {
+
+    private String marka;
+    private int przebieg;
+    private int rokProdukcji;
+
+    public Samochod(String marka, int przebieg, int rokProdukcji) {
+        this.marka = marka;
+        this.przebieg = przebieg;
+        this.rokProdukcji = rokProdukcji;
+    }
+
+    public String getMarka() {
+        return marka;
+    }
+
+    public int getPrzebieg() {
+        return przebieg;
+    }
+
+    public int getRokProdukcji() {
+        return rokProdukcji;
+    }
+
+    @Override
+    public int compareTo(Samochod innySamochod) {
+        // Porównanie rosnące według przebiegu
+        return Integer.compare(przebieg,innySamochod.przebieg);
+    }
+
+    @Override
+    public String toString() {
+        return "Marka: " + marka +
+                ", Przebieg: " + przebieg +
+                ", Rok produkcji: " + rokProdukcji;
+    }
+
+    public static void main(String[] args)
+    {
+        ArrayList<Samochod> SamochodList = new ArrayList<>();
+        SamochodList.add(new Samochod("subaru", 123123, 2019));
+        SamochodList.add(new Samochod("Ford", 120000, 2018));
+        SamochodList.add(new Samochod("Honda", 220000, 2011));
+        Collections.sort(SamochodList);
+        System.out.println(SamochodList);
+
+    }
+}
+
 Zad.3
 Napisz klasę Zamowienie, która zawiera pola: nazwaProduktu (typu String), ilosc (typu int) i cenaJednostkowa (typu double). 
 Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Zamowienie były sortowane według jednego kryterium: malejąco według ceny jednostkowej, a przy równości sortowane były rosnąco według ilości. 
 Stwórz listę tablicową 4 obiektów klasy Zamowienie i posortuj ją według sprecyzowanego kryterium.
+
 
 Zad.4
 Napisz klasę Order z polami id (typu int), customerName (typu String) oraz orderDate (typu LocalDate).
@@ -134,3 +244,6 @@ Zad.6
 Napisz klasę Student z polami id (typu int), name (typu String) oraz averageGrade (typu double). Zaimplementuj dwie klasy implementujące generyczny interfejs Comparator: AverageGradeComparator do porównywania obiektów po polu averageGrade (od najwyższej do najniższej średniej ocen) oraz IdComparator do porównywania obiektów po polu id (od najniższego do najwyższego identyfikatora).
 Stwórz listę 5 obiektów klasy Student i posortuj ją zgodnie z oboma kryteriami (najpierw po średniej ocen, a następnie po identyfikatorze).
 
+Zad.7
+Napisz klasę Athlete z dwoma polami: name (String) i lapTimes (lista tablicowa zmiennych typu Integer, reprezentująca czas w sekundach potrzebny na przebiegnięcie okrążenia podczas różnych prób). Zaimplementuj interfejs Cloneable i nadpisz metodę clone(), aby móc klonować obiekty tej klasy.
+W metodzie main() utwórz obiekt Athlete, sklonuj go, a następnie zmień czas na pozycji 3 oryginalnego sportowca. Wyświetl czasy obu sportowców, aby zobaczyć, czy są niezależne.
