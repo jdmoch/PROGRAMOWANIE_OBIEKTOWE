@@ -112,4 +112,25 @@ Napisz klasę Ksiazka, która zawiera pola: tytul (typu String), liczbaStron (ty
 Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Ksiazka były sortowane malejąco według liczby stron. 
 Stwórz tablicę 4 obiektów klasy Ksiazka i posortuj ją według sprecyzowanego kryterium.
 
+Zad.2
+Napisz klasę Samochod, która zawiera pola: marka (typu String), przebieg (typu int) i rokProdukcji (typu int). 
+Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Samochod były sortowane rosnąco według przebiegu. Stwórz tablicę 4 obiektów klasy Samochod i posortuj ją według sprecyzowanego kryterium.
+
+Zad.3
+Napisz klasę Zamowienie, która zawiera pola: nazwaProduktu (typu String), ilosc (typu int) i cenaJednostkowa (typu double). 
+Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Zamowienie były sortowane według jednego kryterium: malejąco według ceny jednostkowej, a przy równości sortowane były rosnąco według ilości. 
+Stwórz listę tablicową 4 obiektów klasy Zamowienie i posortuj ją według sprecyzowanego kryterium.
+
+Zad.4
+Napisz klasę Order z polami id (typu int), customerName (typu String) oraz orderDate (typu LocalDate).
+Stwórz nową klasę i zaimplementuj w niej interfejs Comparator do porównywania obiektów po polu orderDate (od najwcześniejszej do najpóźniejszej daty), a w przypadku równości po polu id. 
+Stwórz listę 5 obiektów klasy Order i posortuj ją zgodnie z opisanym kryterium.
+
+Zad.5
+Napisz klasę Song z polami title (typu String), artist (typu String) oraz duration (typu int). 
+Stwórz nową klasę i zaimplementuj w niej interfejs Comparator do porównywania obiektów po polu duration (od najkrótszej do najdłuższej piosenki), a w przypadku równości po polu title. Stwórz tablicę 5 obiektów klasy Song i posortuj ją zgodnie z opisanym kryterium.
+
+Zad.6
+Napisz klasę Student z polami id (typu int), name (typu String) oraz averageGrade (typu double). Zaimplementuj dwie klasy implementujące generyczny interfejs Comparator: AverageGradeComparator do porównywania obiektów po polu averageGrade (od najwyższej do najniższej średniej ocen) oraz IdComparator do porównywania obiektów po polu id (od najniższego do najwyższego identyfikatora).
+Stwórz listę 5 obiektów klasy Student i posortuj ją zgodnie z oboma kryteriami (najpierw po średniej ocen, a następnie po identyfikatorze).
 
