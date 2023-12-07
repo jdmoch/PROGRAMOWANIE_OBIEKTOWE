@@ -1,9 +1,10 @@
 Przykladowe
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class oosoba implements Comparable<oosoba>
+public class oosoba implements Comparable<oosoba>, Cloneable
 {
     String name;
     double height;
@@ -44,14 +45,17 @@ public class oosoba implements Comparable<oosoba>
         oosobaList.add(new oosoba(156.0, 24));
         oosobaList.add(new oosoba(176.0,18));
         System.out.println(oosobaList);
-        Collections.sort(oosobaList);
+        //Collections.sort(oosobaList,new oosobaHeightComparator());
+        oosobaList.sort(new oosobaHeightComparator());
         System.out.println(oosobaList);
         ArrayList<oosoba> oosobaList2 = new ArrayList<>();
         oosobaList2.add(new oosoba(156.0, 15));
         oosobaList2.add(new oosoba(158.0,18));
         oosobaList2.add(new oosoba(156.0, 24));
         oosobaList2.add(new oosoba(176.0,18));
-        
+        //Collections.sort(oosobaList2,new oosobaAgeComparator().reversed());
+        oosobaList2.sort(new oosobaAgeComparator());
+        System.out.println(oosobaList2);
 
     }
     @Override
@@ -65,6 +69,41 @@ public class oosoba implements Comparable<oosoba>
         }
         return Double.compare(o.height,this.height);
     }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException
+    {
+        return super.clone();
+    }
+}
+class oosobaHeightComparator implements Comparator<oosoba>
+{
+
+    @Override
+    public int compare(oosoba o1, oosoba o2) {
+        return Double.compare(o2.height, o1.height); //O2 na poczatku = od najwyzszych
+    }
+}
+class oosobaAgeComparator implements Comparator<oosoba>
+{
+
+    @Override
+    public int compare(oosoba o1, oosoba o2) {
+        return Integer.compare(o2.age,o1.age);
+    }
 }
 
+INNY MAIN
+
+public class Main {
+    public static void main(String[] args) throws CloneNotSupportedException
+    {
+        oosoba o1 = new oosoba("Stefan",182,21);
+        oosoba o2 = (oosoba) o1.clone();
+        System.out.println(o1 + " " + o2);
+        o2.age=95;
+        System.out.println(o1 + " " + o2);
+    }
+
+}
 
