@@ -107,3 +107,9 @@ public class Main {
 
 }
 
+Zad.1
+Napisz klasę Ksiazka, która zawiera pola: tytul (typu String), liczbaStron (typu int) i dataWydania (typu LocalDate). 
+Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Ksiazka były sortowane malejąco według liczby stron. 
+Stwórz tablicę 4 obiektów klasy Ksiazka i posortuj ją według sprecyzowanego kryterium.
+
+
