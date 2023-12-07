@@ -230,6 +230,63 @@ Napisz klasę Zamowienie, która zawiera pola: nazwaProduktu (typu String), ilos
 Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Zamowienie były sortowane według jednego kryterium: malejąco według ceny jednostkowej, a przy równości sortowane były rosnąco według ilości. 
 Stwórz listę tablicową 4 obiektów klasy Zamowienie i posortuj ją według sprecyzowanego kryterium.
 
+import java.util.Arrays;
+
+public class Zamowienie implements Comparable<Zamowienie> {
+
+    private String nazwaProduktu;
+    private int ilosc;
+    private double cenaJednostkowa;
+
+    public Zamowienie(String nazwaProduktu, int ilosc, double cenaJednostkowa) {
+        this.nazwaProduktu = nazwaProduktu;
+        this.ilosc = ilosc;
+        this.cenaJednostkowa = cenaJednostkowa;
+    }
+
+    public String getNazwaProduktu() {
+        return nazwaProduktu;
+    }
+
+    public int getIlosc() {
+        return ilosc;
+    }
+
+    public double getCenaJednostkowa() {
+        return cenaJednostkowa;
+    }
+
+    @Override
+    public int compareTo(Zamowienie inneZamowienie) {
+        // Porównanie malejące według ceny jednostkowej
+        int porownanieCeny = Double.compare(inneZamowienie.cenaJednostkowa, this.cenaJednostkowa);
+        
+        if (porownanieCeny != 0) {
+            return porownanieCeny;
+        } else {
+            // W przypadku równości cen, porównaj rosnąco według ilości
+            return Integer.compare(this.ilosc, inneZamowienie.ilosc);
+        }
+    }
+
+    public static void main(String[] args) {
+        Zamowienie[] zamowienia = new Zamowienie[4];
+        zamowienia[0] = new Zamowienie("Produkt A", 5, 10.0);
+        zamowienia[1] = new Zamowienie("Produkt B", 3, 15.0);
+        zamowienia[2] = new Zamowienie("Produkt C", 2, 10.0);
+        zamowienia[3] = new Zamowienie("Produkt D", 4, 12.0);
+
+        // Sortowanie tablicy obiektów klasy Zamowienie
+        Arrays.sort(zamowienia);
+
+        // Wyświetlanie posortowanej tablicy
+        for (Zamowienie zamowienie : zamowienia) {
+            System.out.println("Produkt: " + zamowienie.getNazwaProduktu() +
+                    ", Ilość: " + zamowienie.getIlosc() +
+                    ", Cena jednostkowa: " + zamowienie.getCenaJednostkowa());
+        }
+    }
+}
 
 Zad.4
 Napisz klasę Order z polami id (typu int), customerName (typu String) oraz orderDate (typu LocalDate).
