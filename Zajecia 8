@@ -1,1 +1,70 @@
+Przykladowe
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class oosoba implements Comparable<oosoba>
+{
+    String name;
+    double height;
+    int age;
+
+    public oosoba(String name, double height, int age) {
+        this.name = name;
+        this.height = height;
+        this.age = age;
+    }
+
+    public oosoba(int age) {
+        this.age = age;
+        name = "Jan";
+        height = 170;
+    }
+
+    public oosoba(double height) {
+        this.height = height;
+    }
+
+    public oosoba(double height, int age) {
+        this.height = height;
+        this.age = age;
+    }
+
+    @Override
+    public String toString()
+    {
+        return " " + height+" "+age + " ";
+    }
+
+    public static void main(String[] args)
+    {
+        ArrayList<oosoba> oosobaList = new ArrayList<>();
+        oosobaList.add(new oosoba(156.0, 15));
+        oosobaList.add(new oosoba(158.0,18));
+        oosobaList.add(new oosoba(156.0, 24));
+        oosobaList.add(new oosoba(176.0,18));
+        System.out.println(oosobaList);
+        Collections.sort(oosobaList);
+        System.out.println(oosobaList);
+        ArrayList<oosoba> oosobaList2 = new ArrayList<>();
+        oosobaList2.add(new oosoba(156.0, 15));
+        oosobaList2.add(new oosoba(158.0,18));
+        oosobaList2.add(new oosoba(156.0, 24));
+        oosobaList2.add(new oosoba(176.0,18));
+        
+
+    }
+    @Override
+    public int compareTo(oosoba o)
+    {
+        //return Double.compare(o.height,this.height);
+        //return (int) Math.signum(o.height - this.height);
+        if (Double.compare(o.height,this.height) == 0)
+        {
+            return Integer.compare(o.age,this.age);
+        }
+        return Double.compare(o.height,this.height);
+    }
+}
+
 
