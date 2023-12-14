@@ -1,1 +1,38 @@
+//Załóżmy, że mamy interfejs MusicPlayer z metodami turnOn(), turnOff() i nextTrack(). Stwórz klasę Radio, która będzie implementować ten interfejs. 
+//W metodzie turnOn() powinien zostać wydrukowany komunikat “Radio włączone”, w metodzie turnOff() - “Radio wyłączone”, a w nextTrack() - “Zmieniono stację radiową”.
 
+interface Musicplayer
+{
+    void turnon();
+    void turnoff();
+    void nextTrack();
+}
+
+class Radio implements Musicplayer
+{
+    @Override
+    public void turnon() {
+        System.out.println("Radio wlaczone");
+    }
+
+    @Override
+    public void turnoff() {
+        System.out.println("Radio wylacozne");
+    }
+    @Override
+    public void nextTrack() {
+        System.out.println("Nastepny utwor");
+    }
+}
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Radio radio = new Radio();
+
+        radio.turnon();
+        radio.nextTrack();
+        radio.turnoff();
+    }
+}
