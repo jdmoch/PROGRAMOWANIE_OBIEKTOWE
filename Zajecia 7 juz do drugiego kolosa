@@ -173,3 +173,138 @@ public record Address(String street, int houseNumber, int postalCode, String cit
 Address ad1 = new Address("Prosta", 1, 10234, "Poznan");
         Person2 p2 = new Person2("Jan", "Nowak", ad1);
         System.out.println(p2);
+
+//Stwórz rekord BankAccount, który zawiera numer konta oraz saldo. Dodaj konstruktor, który pozwala na tworzenie konta tylko z numerem, przy czym domyślne saldo wynosi 0. Stwórz przypadek testowy.
+
+public class BankAccount {
+    private String accountNumber;
+    private double balance;
+
+    // Konstruktor z domyślnym saldem równym 0
+    public BankAccount(String accountNumber) {
+        this.accountNumber = accountNumber;
+        this.balance = 0;
+    }
+
+    // Konstruktor z podanym saldem
+    public BankAccount(String accountNumber, double initialBalance) {
+        this.accountNumber = accountNumber;
+        this.balance = initialBalance;
+    }
+
+    // Metoda do pobierania numeru konta
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    // Metoda do pobierania salda
+    public double getBalance() {
+        return balance;
+    }
+
+    // Przykładowy test
+    public static void main(String[] args) {
+        // Tworzymy konto bez podawania salda (domyślne saldo to 0)
+        BankAccount account1 = new BankAccount("1234567890");
+
+        // Wyświetlamy informacje o koncie
+        System.out.println("Numer konta: " + account1.getAccountNumber());
+        System.out.println("Saldo: " + account1.getBalance());
+
+        // Tworzymy konto z podanym saldem
+        BankAccount account2 = new BankAccount("0987654321", 1000.0);
+
+        // Wyświetlamy informacje o drugim koncie
+        System.out.println("Numer konta: " + account2.getAccountNumber());
+        System.out.println("Saldo: " + account2.getBalance());
+    }
+}
+//Stwórz rekord MusicTrack, który opisuje tytuł, artystę i czas trwania utworu w sekundach. Dodaj konstruktor, który przyjmuje tylko tytuł i artystę, przyjmując domyślną długość utworu jako 180 sekund. Stwórz przypadek testowy.
+
+public class MusicTrack {
+    private String title;
+    private String artist;
+    private int durationInSeconds;
+
+    // Konstruktor z domyślną długością utworu (180 sekund)
+    public MusicTrack(String title, String artist) {
+        this.title = title;
+        this.artist = artist;
+        this.durationInSeconds = 180;
+    }
+
+    // Konstruktor z podaną długością utworu
+    public MusicTrack(String title, String artist, int durationInSeconds) {
+        this.title = title;
+        this.artist = artist;
+        this.durationInSeconds = durationInSeconds;
+    }
+
+    // Metoda do pobierania tytułu utworu
+    public String getTitle() {
+        return title;
+    }
+
+    // Metoda do pobierania artysty utworu
+    public String getArtist() {
+        return artist;
+    }
+
+    // Metoda do pobierania długości utworu w sekundach
+    public int getDurationInSeconds() {
+        return durationInSeconds;
+    }
+
+    // Przykładowy test
+    public static void main(String[] args) {
+        // Tworzymy utwór bez podawania długości (domyślna długość to 180 sekund)
+        MusicTrack track1 = new MusicTrack("Song Title", "Artist Name");
+
+        // Wyświetlamy informacje o utworze
+        System.out.println("Tytuł: " + track1.getTitle());
+        System.out.println("Artysta: " + track1.getArtist());
+        System.out.println("Długość utworu: " + track1.getDurationInSeconds() + " sekundy");
+
+        // Tworzymy utwór z podaną długością
+        MusicTrack track2 = new MusicTrack("Another Song", "Another Artist", 240);
+
+        // Wyświetlamy informacje o drugim utworze
+        System.out.println("Tytuł: " + track2.getTitle());
+        System.out.println("Artysta: " + track2.getArtist());
+        System.out.println("Długość utworu: " + track2.getDurationInSeconds() + " sekundy");
+    }
+}
+
+//Stwórz rekord Car, który zawiera brand, model i fuelConsumptionPer100km. Dodaj metodę fuelCost(double fuelPrice, double distance), która oblicza i zwraca koszt podróży na podstawie podanej ceny paliwa oraz dystansu. Stwórz przypadek testowy.
+public class Car {
+    private String brand;
+    private String model;
+    private double fuelConsumptionPer100km;
+
+    // Konstruktor
+    public Car(String brand, String model, double fuelConsumptionPer100km) {
+        this.brand = brand;
+        this.model = model;
+        this.fuelConsumptionPer100km = fuelConsumptionPer100km;
+    }
+
+    // Metoda do obliczania kosztu podróży
+    public double fuelCost(double fuelPrice, double distance) {
+        double fuelNeeded = (fuelConsumptionPer100km / 100) * distance;
+        return fuelNeeded * fuelPrice;
+    }
+
+    // Przykładowy test
+    public static void main(String[] args) {
+        // Tworzymy samochód
+        Car myCar = new Car("Toyota", "Camry", 8.5);
+
+        // Obliczamy koszt podróży dla ceny paliwa 4.50 zł i odległości 200 km
+        double fuelPrice = 4.50;
+        double distance = 200.0;
+        double cost = myCar.fuelCost(fuelPrice, distance);
+
+        // Wyświetlamy informacje o koszcie podróży
+        System.out.println("Koszt podróży: " + cost + " zł");
+    }
+}
