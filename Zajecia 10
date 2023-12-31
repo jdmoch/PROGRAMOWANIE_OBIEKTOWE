@@ -3,6 +3,49 @@ Stwórz interfejs Printer z metodą drukuj(String tekst).Utwórz klasę Standard
 Utwórz klasę Biuro, która posiada prywatne pole typu Printer. W konstruktorze Biuro przyjmij Printer jako argument i przypisz go do pola. 
 Dodaj metodę drukujDokument(String tekst), która będzie delegować zadanie drukowania do obiektu klasy Printer.
 
+// Interfejs Printer
+interface Printer {
+    void drukuj(String tekst);
+}
+
+// Klasa StandardowyPrinter implementująca interfejs Printer
+class StandardowyPrinter implements Printer {
+    @Override
+    public void drukuj(String tekst) {
+        System.out.println("Drukuję tekst: " + tekst);
+    }
+}
+
+// Klasa Biuro z polem typu Printer
+class Biuro {
+    private Printer printer;
+
+    // Konstruktor Biuro przyjmujący Printer jako argument
+    public Biuro(Printer printer) {
+        this.printer = printer;
+    }
+
+    // Metoda drukujDokument delegująca drukowanie do obiektu Printer
+    public void drukujDokument(String tekst) {
+        printer.drukuj(tekst);
+    }
+}
+
+// Przykładowy test
+public class Main {
+    public static void main(String[] args) {
+        // Tworzymy obiekt StandardowyPrinter
+        StandardowyPrinter standardowyPrinter = new StandardowyPrinter();
+
+        // Tworzymy obiekt Biuro, przekazując obiekt StandardowyPrinter jako argument
+        Biuro biuro = new Biuro(standardowyPrinter);
+
+        // Wywołujemy metodę drukujDokument w Biuro
+        biuro.drukujDokument("To jest jakiś dokument.");
+    }
+}
+
+
 2.Wykonaj poniższe czynności:
 Stwórz interfejs Silnik z metodami uruchom() i zatrzymaj().Utwórz klasę BenzynowySilnik, która implementuje Silnik i symuluje działanie silnika na benzynę.
 Utwórz klasę Samochód, która posiada prywatne pole typu Silnik. 
