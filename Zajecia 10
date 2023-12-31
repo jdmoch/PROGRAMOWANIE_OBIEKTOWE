@@ -51,6 +51,61 @@ Stwórz interfejs Silnik z metodami uruchom() i zatrzymaj().Utwórz klasę Benzy
 Utwórz klasę Samochód, która posiada prywatne pole typu Silnik. 
 W konstruktorze przyjmij Silnik jako argument. Dodaj metody start() i stop(), które będą delegować odpowiednio zadanie uruchomienia i zatrzymania silnika do obiektu klasy Silnik.
 
+// Interfejs Silnik
+interface Silnik {
+    void uruchom();
+    void zatrzymaj();
+}
+
+// Klasa BenzynowySilnik implementująca interfejs Silnik
+class BenzynowySilnik implements Silnik {
+    @Override
+    public void uruchom() {
+        System.out.println("Silnik na benzynę uruchomiony.");
+    }
+
+    @Override
+    public void zatrzymaj() {
+        System.out.println("Silnik na benzynę zatrzymany.");
+    }
+}
+
+// Klasa Samochód z polem typu Silnik
+class Samochód {
+    private Silnik silnik;
+
+    // Konstruktor Samochód przyjmujący Silnik jako argument
+    public Samochód(Silnik silnik) {
+        this.silnik = silnik;
+    }
+
+    // Metoda start() delegująca uruchomienie silnika do obiektu Silnik
+    public void start() {
+        silnik.uruchom();
+    }
+
+    // Metoda stop() delegująca zatrzymanie silnika do obiektu Silnik
+    public void stop() {
+        silnik.zatrzymaj();
+    }
+}
+
+// Przykładowy test
+public class Main {
+    public static void main(String[] args) {
+        // Tworzymy obiekt BenzynowySilnik
+        BenzynowySilnik benzynowySilnik = new BenzynowySilnik();
+
+        // Tworzymy obiekt Samochód, przekazując obiekt BenzynowySilnik jako argument
+        Samochód samochód = new Samochód(benzynowySilnik);
+
+        // Wywołujemy metody start() i stop() w Samochód
+        samochód.start();
+        samochód.stop();
+    }
+}
+
+
 3.Wykonaj poniższe czynności:
 Stwórz interfejs Powiadomienie z metodą wyślij(String wiadomość).
 Utwórz klasę Email, która implementuje Powiadomienie i symuluje wysyłanie wiadomości e-mail.Utwórz klasę Użytkownik, która posiada prywatne pole typu Powiadomienie. 
