@@ -24,3 +24,283 @@ public class Box <T, U>{
         this.value2 = value2;
     }
 }
+//Napisz generyczną metodę isEqual, która przyjmuje dwa dowolne obiekty tego samego typu i zwraca true, jeśli są one równe, w przeciwnym razie false.
+
+public class main {
+    public static void main(String[] args) {
+        Integer a = 5, b = 5;
+        System.out.println(isEqual(a, b));
+
+        String str1 = "aaa", str2 = "aaa";
+        System.out.println(isEqual(str1, str2));
+    }
+
+    public static <T> boolean isEqual(T obj1, T obj2) {
+        if (obj1 == null && obj2 == null) {
+            return true;
+        }
+        if (obj1 == null || obj2 == null) {
+            return false;
+        }
+        return obj1.equals(obj2);
+    }
+}
+
+//Stwórz klasę generyczną Triple<T, U, V>, która może przechowywać trzy obiekty różnych typów. Zaimplementuj metody getFirst(), getSecond() i getThird() do pobierania odpowiednio pierwszego, drugiego i trzeciego elementu.
+
+public class Triple<T, U, V> {
+    private T first;
+    private U second;
+    private V third;
+
+    public Triple(T first, U second, V third) {
+        this.first = first;
+        this.second = second;
+        this.third = third;
+    }
+
+    public T getFirst() {
+        return first;
+    }
+
+    public U getSecond() {
+        return second;
+    }
+
+    public V getThird() {
+        return third;
+    }
+
+    public static void main(String[] args) {
+        // Przykład użycia klasy Triple
+        Triple<Integer, String, Double> triple = new Triple<>(10, "Hello", 3.14);
+        System.out.println("Pierwszy: " + triple.getFirst());
+        System.out.println("Drugi: " + triple.getSecond());
+        System.out.println("Trzeci: " + triple.getThird());
+    }
+}
+//Napisz statyczną metodę generyczną swap, która przyjmuje tablicę dowolnego typu i dwa indeksy, a następnie zamienia miejscami elementy w tej tablicy pod wskazanymi indeksami. Metoda powinna działać dla tablicy każdego typu. 
+//Przykładowe wywołanie metody: swap(myArray, 0, 2);, gdzie myArray to tablica typu Integer[] lub dowolnego innego typu. Zabezpiecz metodę tak, aby nie można było jej wywołać z indeksami spoza zakresu tablicy.
+
+import java.util.Arrays;
+
+public class ArraySwap {
+    public static <T> void swap(T[] array, int index1, int index2) {
+        if (index1 < 0 || index1 >= array.length || index2 < 0 || index2 >= array.length) {
+            System.out.println("Błąd: Nieprawidłowe indeksy.");
+            return;
+        }
+
+        T temp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = temp;
+    }
+
+    public static void main(String[] args) {
+        // Przykładowe wywołanie metody swap
+        Integer[] myArray = {1, 2, 3, 4, 5};
+        System.out.println("Przed zamianą: " + Arrays.toString(myArray));
+        swap(myArray, 0, 2);
+        System.out.println("Po zamianie: " + Arrays.toString(myArray));
+
+        // Próba nieprawidłowego wywołania metody
+        swap(myArray, 0, 10);
+    }
+}
+
+//Napisz statyczną metodę generyczną maxValue, która przyjmuje tablicę elementów typu generycznego T, gdzie T rozszerza Comparable<T>. Metoda powinna zwracać największy element z tablicy. Upewnij się, że metoda nie akceptuje pustej tablicy (o zerowej liczbie elementów).
+//Przetestuj metodę na tablicach zawierających różne typy porównywalnych obiektów, jak Integer, Float, czy String. Stwórz klasę Vehicle z polami model i speed, implementującą generyczny Comparable, i przetestuj metodę maxValue na tablicy obiektów Vehicle.
+
+import java.util.Arrays;
+
+public class ArrayMaxValue {
+    public static <T extends Comparable<T>> T maxValue(T[] array) {
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("Tablica nie może być pusta.");
+        }
+
+        T max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i].compareTo(max) > 0) {
+                max = array[i];
+            }
+        }
+
+        return max;
+    }
+
+    public static void main(String[] args) {
+        // Testowanie na różnych typach porównywalnych obiektów
+        Integer[] intArray = {3, 7, 1, 5, 9};
+        System.out.println("Największa wartość w intArray: " + maxValue(intArray));
+
+        Float[] floatArray = {2.5f, 1.2f, 3.7f, 4.0f};
+        System.out.println("Największa wartość w floatArray: " + maxValue(floatArray));
+
+        String[] stringArray = {"apple", "orange", "banana", "grape"};
+        System.out.println("Największa wartość w stringArray: " + maxValue(stringArray));
+
+        // Testowanie na tablicy obiektów Vehicle
+        Vehicle[] vehicles = {
+                new Vehicle("Car", 120),
+                new Vehicle("Bike", 25),
+                new Vehicle("Truck", 80)
+        };
+        System.out.println("Największa prędkość w vehicles: " + maxValue(vehicles).getSpeed());
+    }
+}
+
+class Vehicle implements Comparable<Vehicle> {
+    private String model;
+    private int speed;
+
+    public Vehicle(String model, int speed) {
+        this.model = model;
+        this.speed = speed;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    @Override
+    public int compareTo(Vehicle other) {
+        return Integer.compare(this.speed, other.speed);
+    }
+}
+
+
+1.Zdefiniuj klasy Car (Samochód) i ElectricCar (Samochód Elektryczny), gdzie ElectricCar dziedziczy po Car.
+Napisz statyczną metodę generyczną compareObjects, która przyjmuje dwa argumenty: object1 i object2 typu extends Car. Metoda ma zwracać wartość true, jeśli obiekty są tego samego typu, w przeciwnym wypadku false. Użyj metody getClass() do porównania klas obiektów
+
+class Car {
+    // Tu można dodać różne pola i metody charakterystyczne dla samochodu
+}
+
+class ElectricCar extends Car {
+    // Tu można dodać pola i metody charakterystyczne dla samochodu elektrycznego
+}
+
+public class ObjectComparator {
+    public static <T extends Car> boolean compareObjects(T object1, T object2) {
+        return object1.getClass() == object2.getClass();
+    }
+
+    public static void main(String[] args) {
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ElectricCar electricCar = new ElectricCar();
+
+        System.out.println(compareObjects(car1, car2));           // true
+        System.out.println(compareObjects(car1, electricCar));    // false
+    }
+}
+
+
+2.Stwórz klasę generyczną Triple<T>, która przechowuje trzy obiekty tego samego typu. Następnie utwórz dwie klasy: Bird i Eagle, gdzie Eagle dziedziczy po Bird. 
+Potem napisz statyczną metodę generyczną findMin, która przyjmuje Triple<? extends Bird>. Ta metoda powinna zwracać element mniejszy na podstawie kryterium porównania zdefiniowanego przez ciebie.
+
+class Bird {
+    // Tu można dodać różne pola i metody charakterystyczne dla ptaka
+}
+
+class Eagle extends Bird {
+    // Tu można dodać pola i metody charakterystyczne dla orła
+}
+
+public class TripleFinder {
+    static class Triple<T> {
+        private T first;
+        private T second;
+        private T third;
+
+        public Triple(T first, T second, T third) {
+            this.first = first;
+            this.second = second;
+            this.third = third;
+        }
+    }
+
+    public static <T extends Bird> T findMin(Triple<T> triple) {
+        T min = triple.first;
+        if (triple.second.compareTo(min) < 0) {
+            min = triple.second;
+        }
+        if (triple.third.compareTo(min) < 0) {
+            min = triple.third;
+        }
+        return min;
+    }
+
+    public static void main(String[] args) {
+        Bird bird = new Bird();
+        Eagle eagle = new Eagle();
+        Triple<Bird> birdTriple = new Triple<>(bird, bird, eagle);
+
+        Bird minBird = findMin(birdTriple);
+        System.out.println("Min Bird: " + minBird.getClass().getSimpleName());
+    }
+}
+
+
+3.Stwórz klasę generyczną Pair<T> która przechowuje dwa obiekty tego samego typu. Utwórz dwie klasy: Animal (Zwierzę) i Dog (Pies), gdzie Dog dziedziczy po Animal. Klasa Dog ma posiadać prywatne pole age, które nie posiada klasa Animal. Następnie napisz statyczną metodę generyczną findMinMaxAge, która przyjmuje jako argument tablicę obiektów typu Dog oraz Pair<?super Dog> result. 
+Metoda powinna ma zapisać (jako obiekty typu Dog) najmniejszy i najmniejszy (pod kątem wieku) psa z tablicy w drugim argumencie metody. Zrób to bezpośrednio bez używania interfejsów Comparable czy Comparator.
+
+class Animal {
+    // Tu można dodać różne pola i metody charakterystyczne dla zwierzęcia
+}
+
+class Dog extends Animal {
+    private int age;
+
+    public Dog(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+public class AgeFinder {
+    static class Pair<T> {
+        private T first;
+        private T second;
+
+        public Pair(T first, T second) {
+            this.first = first;
+            this.second = second;
+        }
+    }
+
+    public static void findMinMaxAge(Dog[] dogs, Pair<? super Dog> result) {
+        int minAge = Integer.MAX_VALUE;
+        int maxAge = Integer.MIN_VALUE;
+
+        for (Dog dog : dogs) {
+            int age = dog.getAge();
+            if (age < minAge) {
+                minAge = age;
+                result.first = dog;
+            }
+            if (age > maxAge) {
+                maxAge = age;
+                result.second = dog;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Dog[] dogs = {
+                new Dog(3),
+                new Dog(5),
+                new Dog(2)
+        };
+
+        Pair<Animal> result = new Pair<>(null, null);
+        findMinMaxAge(dogs, result);
+
+        System.out.println("Min Dog Age: " + ((Dog) result.first).getAge());
+        System.out.println("Max Dog Age: " + ((Dog) result.second).getAge());
+    }
+}
