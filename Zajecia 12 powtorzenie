@@ -70,3 +70,58 @@ public class Main {
         System.out.println("Dane są w poprawnym formacie: " + dane);
     }
 }
+
+3.Napisz klasę Product, która zawiera pola: name (typu String), price (typu double) i productionYear (typu int).
+Zaimplementuj interfejs Comparable w taki sposób, aby obiekty klasy Product były sortowane rosnąco według daty produkcji. 
+Stwórz listę tablicową 5 obiektów klasy Product i posortuj ją według sprecyzowanego kryterium.
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Product implements Comparable<Product> {
+    private String name;
+    private double price;
+    private int productionYear;
+
+    public Product(String name, double price, int productionYear) {
+        this.name = name;
+        this.price = price;
+        this.productionYear = productionYear;
+    }
+
+    // Gettery i settery (nie przedstawione dla czytelności)
+
+    @Override
+    public int compareTo(Product other) {
+        // Implementacja porównania według daty produkcji
+        return Integer.compare(this.productionYear, other.productionYear);
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", productionYear=" + productionYear +
+                '}';
+    }
+
+    public static void main(String[] args) {
+        // Tworzenie listy 5 obiektów klasy Product
+        List<Product> productList = new ArrayList<>();
+        productList.add(new Product("Laptop", 1500.0, 2020));
+        productList.add(new Product("Smartphone", 800.0, 2022));
+        productList.add(new Product("Camera", 500.0, 2019));
+        productList.add(new Product("Headphones", 100.0, 2021));
+        productList.add(new Product("Tablet", 400.0, 2023));
+
+        // Sortowanie listy używając interfejsu Comparable
+        Collections.sort(productList);
+
+        // Wyświetlenie posortowanej listy
+        for (Product product : productList) {
+            System.out.println(product);
+        }
+    }
+}
