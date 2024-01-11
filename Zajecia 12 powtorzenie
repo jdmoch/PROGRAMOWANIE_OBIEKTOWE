@@ -193,6 +193,7 @@ class BirthDateComparator implements Comparator<Person> {
         return Integer.compare(person1.getBirthYear(), person2.getBirthYear());
     }
 }
+
 5.Stwórz interfejs Powiadomienie z metodą wyślij(String wiadomość).
 Utwórz klasę Email, która implementuje Powiadomienie i symuluje wysyłanie wiadomości e-mail.
 Utwórz klasę Użytkownik, która posiada prywatne pole typu Powiadomienie. W konstruktorze przyjmij Powiadomienie jako argument. 
