@@ -125,3 +125,71 @@ public class Product implements Comparable<Product> {
         }
     }
 }
+
+4.Napisz klasę Person z polami firstName (typu String), lastName (typu String) oraz birthYear (typu int). 
+Zaimplementuj dwie klasy implementujące generyczny interfejs Comparator: 
+LastNameComparator do porównywania obiektów po polu lastName (alfabetycznie od A do Z) oraz BirthDateComparator do porównywania obiektów po polu birthYear (od najstarszej do najmłodszej osoby).
+Stwórz tablicę 5 obiektów klasy Person i posortuj ją zgodnie z oboma kryteriami (najpierw po nazwisku, a następnie przy równości po dacie urodzenia).
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+class Person {
+    private String firstName;
+    private String lastName;
+    private int birthYear;
+
+    public Person(String firstName, String lastName, int birthYear) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthYear = birthYear;
+    }
+
+    // Gettery i settery (nie przedstawione dla czytelności)
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthYear=" + birthYear +
+                '}';
+    }
+
+    public static void main(String[] args) {
+        // Tworzenie tablicy 5 obiektów klasy Person
+        Person[] people = {
+                new Person("John", "Doe", 1990),
+                new Person("Jane", "Smith", 1985),
+                new Person("Bob", "Johnson", 1995),
+                new Person("Alice", "Williams", 1980),
+                new Person("Charlie", "Brown", 1992)
+        };
+
+        // Sortowanie po lastName (alfabetycznie)
+        Arrays.sort(people, new LastNameComparator());
+        System.out.println("Sortowanie po lastName:");
+        Arrays.stream(people).forEach(System.out::println);
+
+        System.out.println();
+
+        // Sortowanie po birthYear (od najstarszej do najmłodszej)
+        Arrays.sort(people, new BirthDateComparator());
+        System.out.println("Sortowanie po birthYear:");
+        Arrays.stream(people).forEach(System.out::println);
+    }
+}
+
+class LastNameComparator implements Comparator<Person> {
+    @Override
+    public int compare(Person person1, Person person2) {
+        return person1.getLastName().compareTo(person2.getLastName());
+    }
+}
+
+class BirthDateComparator implements Comparator<Person> {
+    @Override
+    public int compare(Person person1, Person person2) {
+        return Integer.compare(person1.getBirthYear(), person2.getBirthYear());
+    }
+}
