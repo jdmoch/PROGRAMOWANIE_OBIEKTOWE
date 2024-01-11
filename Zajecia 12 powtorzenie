@@ -198,3 +198,50 @@ class BirthDateComparator implements Comparator<Person> {
 Utwórz klasę Email, która implementuje Powiadomienie i symuluje wysyłanie wiadomości e-mail.
 Utwórz klasę Użytkownik, która posiada prywatne pole typu Powiadomienie. W konstruktorze przyjmij Powiadomienie jako argument. 
 Dodaj metodę powiadomOModernizacji(String informacja), która będzie delegować zadanie wysyłania powiadomienia do obiektu klasy Powiadomienie
+
+public class Main {
+    public static void main(String[] args) {
+        Uzytkownik u1 = new Uzytkownik(new Discord());
+        Uzytkownik u2 = new Uzytkownik(new Email());
+
+        u1.powiadomOModernizacji("nie wiem");
+        u2.powiadomOModernizacji("xd");
+    }
+}
+
+public interface Powiadomienie {
+    public void wyslij(String Wiadomosc);
+}
+
+
+public class Uzytkownik {
+    private Powiadomienie userNotification;
+
+    public Uzytkownik(Powiadomienie userNotification) {
+        this.userNotification = userNotification;
+    }
+
+    public void powiadomOModernizacji(String informacja)
+    {
+        userNotification.wyslij(informacja);
+    }
+}
+
+
+public class Email implements Powiadomienie{
+
+    public void wyslij(String wiadomosc)
+    {
+        System.out.println("Wyslano mail o tesci:" + wiadomosc);
+    }
+
+}
+
+
+public class Discord implements Powiadomienie{
+
+    public void wyslij(String wiadomosc)
+    {
+        System.out.println("Nowa discord:" + wiadomosc);
+    }
+}
