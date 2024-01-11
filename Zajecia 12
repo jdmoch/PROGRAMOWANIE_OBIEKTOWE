@@ -1,7 +1,0 @@
-1. Napisz program, który prosi użytkownika o wpisanie dwóch liczb, a następnie dzieli pierwszą liczbę przez drugą. 
-Program powinien obsługiwać dwa rodzaje wyjątków: ArithmeticException w przypadku dzielenia przez zero i InputMismatchException, gdy użytkownik wprowadzi coś innego niż liczby.
-W obu przypadkach należy wyświetlić stosowny komunikat błędu i poprosić użytkownika o ponowne wprowadzenie danych. Wykorzystaj typ int.
-2.
-
-
-
