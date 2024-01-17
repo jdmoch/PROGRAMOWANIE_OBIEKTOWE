@@ -114,6 +114,26 @@ W konstruktorze przyjmij Powiadomienie jako argument. Dodaj metodę powiadomOMod
 4.Napisz program, który definiuje metodę checkAge(int age). Metoda ta powinna rzucić wyjątek IllegalArgumentException z odpowiednim komunikatem, jeśli podany wiek jest mniejszy niż 18. 
 W głównej metodzie programu (main) wywołaj checkAge z różnymi wartościami i obsłuż wyjątek, wyświetlając stosowny komunikat dla użytkownika.
 
+public class AgeChecker {
+
+    public static void checkAge(int age) {
+        if (age < 18) {
+            throw new IllegalArgumentException("Wiek musi być równy lub większy niż 18.");
+        }
+        System.out.println("Wiek jest odpowiedni: " + age);
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(25);
+            checkAge(17); // Ta linia spowoduje rzucenie wyjątku
+            checkAge(30);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Błąd: " + e.getMessage());
+        }
+    }
+}
+
 5.Napisz program, który prosi użytkownika o wpisanie dwóch liczb, a następnie dzieli pierwszą liczbę przez drugą.
 Program powinien obsługiwać dwa rodzaje wyjątków: ArithmeticException w przypadku dzielenia przez zero i InputMismatchException, gdy użytkownik wprowadzi coś innego niż liczby. 
 W obu przypadkach należy wyświetlić stosowny komunikat błędu i poprosić użytkownika o ponowne wprowadzenie danych. Wykorzystaj typ int.
