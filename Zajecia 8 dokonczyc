@@ -293,13 +293,213 @@ Napisz klasę Order z polami id (typu int), customerName (typu String) oraz orde
 Stwórz nową klasę i zaimplementuj w niej interfejs Comparator do porównywania obiektów po polu orderDate (od najwcześniejszej do najpóźniejszej daty), a w przypadku równości po polu id. 
 Stwórz listę 5 obiektów klasy Order i posortuj ją zgodnie z opisanym kryterium.
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Order {
+    private int id;
+    private String customerName;
+    private LocalDate orderDate;
+
+    public Order(int id, String customerName, LocalDate orderDate) {
+        this.id = id;
+        this.customerName = customerName;
+        this.orderDate = orderDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public LocalDate getOrderDate() {
+        return orderDate;
+    }
+}
+
+class OrderComparator implements Comparator<Order> {
+    @Override
+    public int compare(Order o1, Order o2) {
+        int dateComparison = o1.getOrderDate().compareTo(o2.getOrderDate());
+
+        if (dateComparison == 0) {
+            // If dates are equal, compare by id
+            return Integer.compare(o1.getId(), o2.getId());
+        }
+
+        return dateComparison;
+    }
+}
+
+public class OrderTest {
+    public static void main(String[] args) {
+        List<Order> orders = new ArrayList<>();
+        orders.add(new Order(1, "Customer A", LocalDate.of(2022, 1, 15)));
+        orders.add(new Order(2, "Customer B", LocalDate.of(2022, 1, 10)));
+        orders.add(new Order(3, "Customer C", LocalDate.of(2022, 1, 12)));
+        orders.add(new Order(4, "Customer D", LocalDate.of(2022, 1, 8)));
+        orders.add(new Order(5, "Customer E", LocalDate.of(2022, 1, 10)));
+
+        // Sort orders using the OrderComparator
+        Collections.sort(orders, new OrderComparator());
+
+        // Display sorted orders
+        for (Order order : orders) {
+            System.out.println("Order ID: " + order.getId() +
+                    ", Customer: " + order.getCustomerName() +
+                    ", Order Date: " + order.getOrderDate());
+        }
+    }
+}
+
+
 Zad.5
 Napisz klasę Song z polami title (typu String), artist (typu String) oraz duration (typu int). 
 Stwórz nową klasę i zaimplementuj w niej interfejs Comparator do porównywania obiektów po polu duration (od najkrótszej do najdłuższej piosenki), a w przypadku równości po polu title. Stwórz tablicę 5 obiektów klasy Song i posortuj ją zgodnie z opisanym kryterium.
 
+import java.util.Arrays;
+import java.util.Comparator;
+
+class Song {
+    private String title;
+    private String artist;
+    private int duration; // czas trwania w sekundach
+
+    public Song(String title, String artist, int duration) {
+        this.title = title;
+        this.artist = artist;
+        this.duration = duration;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+}
+
+class SongComparator implements Comparator<Song> {
+    @Override
+    public int compare(Song song1, Song song2) {
+        int durationComparison = Integer.compare(song1.getDuration(), song2.getDuration());
+
+        if (durationComparison == 0) {
+            // If durations are equal, compare by title
+            return song1.getTitle().compareTo(song2.getTitle());
+        }
+
+        return durationComparison;
+    }
+}
+
+public class SongTest {
+    public static void main(String[] args) {
+        Song[] songs = {
+                new Song("Song A", "Artist X", 180),
+                new Song("Song B", "Artist Y", 240),
+                new Song("Song C", "Artist Z", 200),
+                new Song("Song D", "Artist X", 210),
+                new Song("Song E", "Artist Y", 180)
+        };
+
+        // Sort songs using the SongComparator
+        Arrays.sort(songs, new SongComparator());
+
+        // Display sorted songs
+        for (Song song : songs) {
+            System.out.println("Title: " + song.getTitle() +
+                    ", Artist: " + song.getArtist() +
+                    ", Duration: " + song.getDuration() + " seconds");
+        }
+    }
+}
+
 Zad.6
 Napisz klasę Student z polami id (typu int), name (typu String) oraz averageGrade (typu double). Zaimplementuj dwie klasy implementujące generyczny interfejs Comparator: AverageGradeComparator do porównywania obiektów po polu averageGrade (od najwyższej do najniższej średniej ocen) oraz IdComparator do porównywania obiektów po polu id (od najniższego do najwyższego identyfikatora).
 Stwórz listę 5 obiektów klasy Student i posortuj ją zgodnie z oboma kryteriami (najpierw po średniej ocen, a następnie po identyfikatorze).
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Student {
+    private int id;
+    private String name;
+    private double averageGrade;
+
+    public Student(int id, String name, double averageGrade) {
+        this.id = id;
+        this.name = name;
+        this.averageGrade = averageGrade;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getAverageGrade() {
+        return averageGrade;
+    }
+}
+
+class AverageGradeComparator implements Comparator<Student> {
+    @Override
+    public int compare(Student student1, Student student2) {
+        return Double.compare(student2.getAverageGrade(), student1.getAverageGrade());
+    }
+}
+
+class IdComparator implements Comparator<Student> {
+    @Override
+    public int compare(Student student1, Student student2) {
+        return Integer.compare(student1.getId(), student2.getId());
+    }
+}
+
+public class StudentTest {
+    public static void main(String[] args) {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(1, "Alice", 85.5));
+        students.add(new Student(2, "Bob", 78.0));
+        students.add(new Student(3, "Charlie", 92.3));
+        students.add(new Student(4, "David", 79.8));
+        students.add(new Student(5, "Eva", 88.2));
+
+        // Sort students by AverageGradeComparator
+        Collections.sort(students, new AverageGradeComparator());
+        System.out.println("Sorted by Average Grade:");
+        displayStudents(students);
+
+        // Sort students by IdComparator
+        Collections.sort(students, new IdComparator());
+        System.out.println("\nSorted by Id:");
+        displayStudents(students);
+    }
+
+    private static void displayStudents(List<Student> students) {
+        for (Student student : students) {
+            System.out.println("ID: " + student.getId() +
+                    ", Name: " + student.getName() +
+                    ", Average Grade: " + student.getAverageGrade());
+        }
+    }
+}
 
 Zad.7
 Napisz klasę Athlete z dwoma polami: name (String) i lapTimes (lista tablicowa zmiennych typu Integer, reprezentująca czas w sekundach potrzebny na przebiegnięcie okrążenia podczas różnych prób). Zaimplementuj interfejs Cloneable i nadpisz metodę clone(), aby móc klonować obiekty tej klasy.
